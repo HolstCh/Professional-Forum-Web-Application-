@@ -1,24 +1,34 @@
+import java.util.List;
+
 public class Profile {
     private String firstname;
     private String lastname;
     private String email;
     private String aboutMe;
     private String currentCompany;
-    private ArrayList<String> professionTypes;
-    private ArrayList<String> skills;
-    private ArrayList<String> projects;
-    private ArrayList<String> pastCompanies;
+    private List<String> professionTypes;
+    private List<String> skills;
+    private List<String> projects;
+    private List<String> pastCompanies;
 
     public Profile (String firstname, 
                     String lastname, 
                     String email,
                     String aboutMe, 
                     String currentCompany, 
-                    ArrayList<String> professionTypes, 
-                    ArrayList<String> skills,
-                    ArrayList<String> projects, 
-                    ArrayList<String> pastCompanies) {
-                        this.
+                    List<String> professionTypes, 
+                    List<String> skills,
+                    List<String> projects, 
+                    List<String> pastCompanies) {
+                        this.setFirstName(firstname);
+                        this.setLastName(lastname);
+                        this.setEmail(email);
+                        this.setAboutMe(aboutMe);
+                        this.setCurrentCompany(currentCompany);
+                        this.setProfessionTypes(professionTypes);
+                        this.setSkills(skills);
+                        this.setProjects(projects);
+                        this.setPastCompanies(pastCompanies);
                     }
 
     public void setFirstName(String firstname) {
@@ -61,7 +71,7 @@ public class Profile {
         return this.currentCompany;
     }
 
-    public void setProfessionTypes(ArrayList<String> professionTypes) {
+    public void setProfessionTypes(List<String> professionTypes) {
         this.professionTypes = professionTypes;
     }
 
@@ -69,11 +79,11 @@ public class Profile {
         this.professionTypes.add(professionTypes);
     }
 
-    public ArrayList<String> getProfessionTypes() {
+    public List<String> getProfessionTypes() {
         return this.professionTypes;
     }
 
-    public void setSkills(ArrayList<String> skills) {
+    public void setSkills(List<String> skills) {
         this.skills = skills;
     }
 
@@ -81,11 +91,11 @@ public class Profile {
         this.skills.add(skill);
     }
 
-    public ArrayList<String> getSkills() {
+    public List<String> getSkills() {
         return this.skills;
     }
 
-    public void setProjects(ArrayList<String> projects) {
+    public void setProjects(List<String> projects) {
         this.projects = projects;
     }
 
@@ -93,11 +103,11 @@ public class Profile {
         this.projects.add(project);
     }
 
-    public ArrayList<String> getProjects() {
+    public List<String> getProjects() {
         return this.projects;
     }
 
-    public void setPastCompanies(ArrayList<String> pastCompanies) {
+    public void setPastCompanies(List<String> pastCompanies) {
         this.pastCompanies = pastCompanies;
     }
 
@@ -105,7 +115,7 @@ public class Profile {
         this.pastCompanies.add(pastCompany);
     }
 
-    public ArrayList<String> pastCompanies() {
+    public List<String> pastCompanies() {
         return this.pastCompanies;
     }
 }
