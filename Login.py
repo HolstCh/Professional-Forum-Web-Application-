@@ -2,7 +2,9 @@
 #File name: Login.py
 #Version: 1.0
 
-import mysql.connector
+from App import app
+from Database import mysql
+#import mysql.connector
 debug = True
 
 class Login:

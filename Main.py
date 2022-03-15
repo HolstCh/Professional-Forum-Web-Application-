@@ -1,8 +1,8 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify, flash
+from App import app
 
-app = Flask(__name__)
+HOST = "http://127.0.0.1:5000/"
 
-BASE = "http://127.0.0.1:5000/"
 
 @app.route('/')
 def mainPage():  # put application's code here
