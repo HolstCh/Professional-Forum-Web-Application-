@@ -1,3 +1,7 @@
+#Created by: Chloe Bouchard
+#File name: Login.py
+#Version: 1.0
+
 import mysql.connector
 debug = True
 
