@@ -1,0 +1,47 @@
+<html>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
+    
+    <style>
+        .header h1
+        {
+           font-family: 'Audiowide', serif;
+           font-size: 36px;
+           font-weight: 400;
+           background-color: white;
+        }
+    </style>
+
+    <div class="header h1">
+        <p style="text-align:center"> <img src="/static/professional_logo.jpg" alt="logo" width="200" height="200"> </p>
+        <h1 style="text-align:center" font="Audiowide"> KnowPros </h1>
+    </div>
+
+    <br>
+
+    <h1 style="text-align:center"> Sign up </h1>
+
+    <body>
+        <form method="POST">
+            <p>
+                <label for="username"> Username: </label>
+                <br>
+                <input type="text" name="username" id="username" autocomplete="off" required>
+            </p>
+
+            {% if data %}
+                <p style="color:red"><strong> ERROR: Username already exists </strong></p>
+            {% endif %}
+
+            
+            <p>
+                <label for="password"> Password: </label>
+                <br>
+                <input type="password" name="password" id="password" required>
+            </p>
+
+            <br>
+
+            <p> <button type="submit"> Submit </button> </p>
+        </form>
+    </body>
+</html>
