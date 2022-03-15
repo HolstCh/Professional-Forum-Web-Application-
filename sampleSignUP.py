@@ -1,13 +1,3 @@
-# To run server:
-#   1. cd "C:\Users\coolp\Documents\Dylan\School\Y3 - 2022 WINTER\SENG 401 - Software Architecture\Project\test"
-#   2. python -m venv test
-#   3. scripts\activate
-#   4. python -m flask run
-
-# Installation commands:
-#   > python -m pip install flask
-#   > python -m pip install flask_mysqldb
-
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 
@@ -83,6 +73,7 @@ def profile():
         cursor.close()
 
         return "<h1 style='color:green'> Record added successfully! </h1>"
+#end of def
 
 if __name__=='__main__':
     app.run(debug=True)
