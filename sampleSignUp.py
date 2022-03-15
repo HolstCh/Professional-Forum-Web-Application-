@@ -3,17 +3,18 @@ from flask_mysqldb import MySQL
 
 app=Flask(__name__)
 
+# Change the following 4 lines based on your MySQL account
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'draGGun.!382'
-app.config['MYSQL_DB'] = 'seng401'
+app.config['MYSQL_DB'] = 'seng401_profiles'
 
 mysql=MySQL(app)
 
 @app.route("/", methods=["GET", "POST"])
 def signUp():
     if request.method == "GET":
-        return render_template("testSignUp.html")
+        return render_template("signUp.html")
 
     if request.method == "POST":
         global username
@@ -26,7 +27,7 @@ def signUp():
 
         if result:
             #return "<h1 style='color:red'> Record already exists! </h1>"
-            return render_template("testSignUp.html", data=username)
+            return render_template("signUp.html", data=username)
         else:
             cursor.execute("INSERT INTO Users (username, password) VALUES(%s, %s)", (username, password))
             mysql.connection.commit()
@@ -37,7 +38,7 @@ def signUp():
 @app.route("/edit/profile", methods=["GET", "POST"])
 def profile():
     if request.method == "GET":
-        return render_template("testProfile.html")
+        return render_template("editProfile.html")
 
     if request.method == "POST":
         fName=request.form.get("fName", None)
