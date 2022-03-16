@@ -1,0 +1,48 @@
+<html>
+
+    <div id="wrapper">
+        <form class="testForm" id="testForm">
+            <p>
+                <label for="field1"> Field 1: </label>
+                <br>
+                <input type="text" id="field1" name="field1">
+            </p>
+
+            <p>
+                <label for="field2"> Field 2: </label>
+                <br>
+                <input type="text" id="field2" name="field2">
+            </p>
+
+            <p>
+                <label for="field3"> Field 3: </label>
+                <br>
+                <input type="text" id="field3" name="field3">
+            </p>
+
+            <br>
+        </form>
+    </div>
+
+    <form method="post">
+        <p>
+            <input type="button" id="addForms" onclick="duplicateForm();" value="Add more forms"/>
+        </p>
+
+        <p>
+            <input type="button" id="submit" value="Submit"/>
+        </p>
+    </form>
+
+    <script>
+        // For button inside of form
+        const div=document.getElementById('wrapper');
+
+        function duplicateForm() {
+            let forms=div.getElementsByClassName('testForm');
+            let firstForm=forms[0];
+            let formClone=firstForm.cloneNode(true);
+            div.appendChild(formClone);
+        }
+    </script>
+</html>
