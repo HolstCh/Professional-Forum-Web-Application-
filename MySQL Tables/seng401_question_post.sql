@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `question_post`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `question_post`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `ProfessionType` varchar(255) NOT NULL,
-  UNIQUE KEY `username` (`username`)
+CREATE TABLE `question_post` (
+  `QuestionPostID` int NOT NULL,
+  `Title` text,
+  `Body` text,
+  `Username` text,
+  `QuestionDate` text,
+  `Approvals` int DEFAULT NULL,
+  `Disapprovals` int DEFAULT NULL,
+  `Profession` text,
+  `ProfessionCategory` text,
+  PRIMARY KEY (`QuestionPostID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `question_post`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('test1','test1',NULL,'');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `question_post` WRITE;
+/*!40000 ALTER TABLE `question_post` DISABLE KEYS */;
+/*!40000 ALTER TABLE `question_post` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-16 16:43:14
+-- Dump completed on 2022-03-16 16:43:13
