@@ -1,0 +1,214 @@
+<html>
+    <body>
+        <form method="post">
+            <p>
+                <label for="title"><b> TITLE </b></label>
+                <br>
+                <textarea name="title" id="title" rows="1" cols="145" autocomplete="off" required></textarea>
+            </p>
+
+            <p>
+                <b> TAGS </b>
+                <br>
+                <label for="prof"> Profession </label>
+                <select name="prof" id="prof" onchange="getTopics(this)">
+                    <option value="0"></option>
+                    <option value="1"> Chemical </option>
+                    <option value="2"> Civil </option>
+                    <option value="3"> Electrical </option>
+                    <option value="4"> Geomatics </option>
+                    <option value="5"> Mechanical </option>
+                    <option value="6"> Software </option>
+                </select>
+
+                <div id="civil_options" style="display:none">
+                    <input type="checkbox" id="t1" name="t1" value="coma"> Construction Management
+                    <br>
+                    <input type="checkbox" id="t2" name="t2" value="bude"> Building Design
+                    <br>
+                    <input type="checkbox" id="t3" name="t3" value="some"> Solid Mechanics
+                    <br>
+                    <input type="checkbox" id="t4" name="t4" value="brid"> Bridges
+                    <br>
+                    <input type="checkbox" id="t5" name="t5" value="cote"> Concrete Technology
+                    <br>
+                    <input type="checkbox" id="t6" name="t6" value="aead"> Anti-earthquake Design
+                    <br>
+                    <input type="checkbox" id="t7" name="t7" value="sost"> Soil Structure
+                    <br>
+                    <input type="checkbox" id="t8" name="t8" value="stdy"> Structural Dynamics
+                    <br>
+                    <input type="checkbox" id="t9" name="t9" value="stop"> Structural Optimization
+                </div>
+
+                <div id="chemical_options" style="display:none">
+                    <input type="checkbox" id="t1" name="t1" value="maba"> Mass Balance
+                    <br>
+                    <input type="checkbox" id="t2" name="t2" value="enba"> Energy Balance
+                    <br>
+                    <input type="checkbox" id="t3" name="t3" value="ther"> Thermodynamics
+                    <br>
+                    <input type="checkbox" id="t4" name="t4" value="fldy"> Fluid Dynamics
+                    <br>
+                    <input type="checkbox" id="t5" name="t5" value="flst"> Fluid Statics
+                    <br>
+                    <input type="checkbox" id="t6" name="t6" value="hetr"> Heat Transfer
+                    <br>
+                    <input type="checkbox" id="t7" name="t7" value="motr"> Momentum Transport
+                    <br>
+                    <input type="checkbox" id="t8" name="t8" value="sepa"> Separation
+                    <br>
+                    <input type="checkbox" id="t9" name="t9" value="reac"> Reactors
+                </div>
+
+                <div id="electrical_options" style="display:none">
+                    <input type="checkbox" id="t1" name="t1" value="circ"> Circuits
+                    <br>
+                    <input type="checkbox" id="t2" name="t2" value="poen"> Power and Energy
+                    <br>
+                    <input type="checkbox" id="t3" name="t3" value="tele"> Telecommunications
+                    <br>
+                    <input type="checkbox" id="t4" name="t4" value="contr"> Controls
+                    <br>
+                    <input type="checkbox" id="t5" name="t5" value="micr"> Microelectronics
+                    <br>
+                    <input type="checkbox" id="t6" name="t6" value="nano"> Nanoelectronics
+                    <br>
+                    <input type="checkbox" id="t7" name="t7" value="sign"> Signals
+                    <br>
+                    <input type="checkbox" id="t8" name="t8" value="comp"> Computers
+                    <br>
+                    <input type="checkbox" id="t9" name="t9" value="opph"> Optics and Photonics
+                </div>
+
+                <div id="geomatics_options" style="display:none">
+                    <input type="checkbox" id="t1" name="t1" value="surv"> Surveying
+                    <br>
+                    <input type="checkbox" id="t2" name="t2" value="navi"> Navigation
+                    <br>
+                    <input type="checkbox" id="t3" name="t3" value="urpl"> Urban and Regional Planning
+                    <br>
+                    <input type="checkbox" id="t4" name="t4" value="ocea"> Oceanography
+                    <br>
+                    <input type="checkbox" id="t5" name="t5" value="mete"> Meteorology
+                    <br>
+                    <input type="checkbox" id="t6" name="t6" value="clch"> Climate Change
+                    <br>
+                    <input type="checkbox" id="t7" name="t7" value="arch"> Archeology
+                    <br>
+                    <input type="checkbox" id="t8" name="t8" value="czmm"> Coastal Zone Management and Mapping
+                </div>
+
+                <div id="mechanical_options" style="display:none">
+                    <input type="checkbox" id="t1" name="t1" value="flui"> Fluid Mechanics
+                    <br>
+                    <input type="checkbox" id="t2" name="t2" value="comb"> Combustion
+                    <br>
+                    <input type="checkbox" id="t3" name="t3" value="sydc"> System Dynamics and Control
+                    <br>
+                    <input type="checkbox" id="t4" name="t4" value="trsy"> Transportation Systems
+                    <br>
+                    <input type="checkbox" id="t5" name="t5" value="gvsy"> Ground Vehicle Systems
+                    <br>
+                    <input type="checkbox" id="t6" name="t6" value="biom"> Biomechanics
+                    <br>
+                    <input type="checkbox" id="t7" name="t7" value="gvsy"> Materials and Structures
+                    <br>
+                    <input type="checkbox" id="t8" name="t8" value="vibr"> Vibrations
+                    <br>
+                    <input type="checkbox" id="t9" name="t9" value="acou"> Acoustics
+                </div>
+
+                <div id="software_options" style="display:none">
+                    <input type="checkbox" id="t1" name="t1" value="algo"> Algorithms
+                    <br>
+                    <input type="checkbox" id="t2" name="t2" value="bida"> Big Data
+                    <br>
+                    <input type="checkbox" id="t4" name="t4" value="gui"> GUI
+                    <br>
+                    <input type="checkbox" id="t5" name="t5" value="java"> Java
+                    <br>
+                    <input type="checkbox" id="t6" name="t6" value="pyth"> Python
+                    <br>
+                    <input type="checkbox" id="t7" name="t7" value="cc++"> C/C++
+                    <br>
+                    <input type="checkbox" id="t8" name="t8" value="csha"> C#
+                    <br>
+                    <input type="checkbox" id="t9" name="t9" value="rwby"> Ruby
+                    <br>
+                    <input type="checkbox" id="t10" name="t10" value="jasc"> JavaScript
+                </div>
+            </p>
+
+            <br>
+
+            <!-- Add static text for author's username -->
+
+            <p>
+                <label for="ques"><b> BODY </b></label>
+                <br>
+                <textarea name="ques" id="ques" rows="20" cols="145" autocomplete="off" required></textarea>
+            </p>
+
+            <br>
+
+            <button type="submit"> Submit </button>
+        </form>
+    </body>
+</html>
+
+<script>
+    function getTopics(menu){
+        var index=menu.options[menu.selectedIndex].value;
+
+        if(index == 1){         // Chemical
+            document.getElementById("chemical_options").style.display="block";
+            document.getElementById("civil_options").style.display="none";
+            document.getElementById("electrical_options").style.display="none";
+            document.getElementById("geomatics_options").style.display="none";
+            document.getElementById("mechanical_options").style.display="none";
+            document.getElementById("software_options").style.display="none";
+        }
+        else if(index == 2){    // Civil
+            document.getElementById("chemical_options").style.display="none";
+            document.getElementById("civil_options").style.display="block";
+            document.getElementById("electrical_options").style.display="none";
+            document.getElementById("geomatics_options").style.display="none";
+            document.getElementById("mechanical_options").style.display="none";
+            document.getElementById("software_options").style.display="none";
+        }
+        else if(index == 3){    // Electrical
+            document.getElementById("chemical_options").style.display="none";
+            document.getElementById("civil_options").style.display="none";
+            document.getElementById("electrical_options").style.display="block";
+            document.getElementById("geomatics_options").style.display="none";
+            document.getElementById("mechanical_options").style.display="none";
+            document.getElementById("software_options").style.display="none";
+        }
+        else if(index == 4){    // Geomatics
+            document.getElementById("chemical_options").style.display="none";
+            document.getElementById("civil_options").style.display="none";
+            document.getElementById("electrical_options").style.display="none";
+            document.getElementById("geomatics_options").style.display="block";
+            document.getElementById("mechanical_options").style.display="none";
+            document.getElementById("software_options").style.display="none";
+        }
+        else if(index == 5){    // Mechanical
+            document.getElementById("chemical_options").style.display="none";
+            document.getElementById("civil_options").style.display="none";
+            document.getElementById("electrical_options").style.display="none";
+            document.getElementById("geomatics_options").style.display="none";
+            document.getElementById("mechanical_options").style.display="block";
+            document.getElementById("software_options").style.display="none";
+        }
+        else if(index == 6){    // Software
+            document.getElementById("chemical_options").style.display="none";
+            document.getElementById("civil_options").style.display="none";
+            document.getElementById("electrical_options").style.display="none";
+            document.getElementById("geomatics_options").style.display="none";
+            document.getElementById("mechanical_options").style.display="none";
+            document.getElementById("software_options").style.display="block";
+        }
+    }
+</script>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+        }
+
+        th, td{
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+    </style>
+
+    <body>
+        <table>
+            <tr>
+                <th> First Name </th>
+                <th> Middle Names </th>
+                <th> Last Name </th>
+                <th> Email </th>
+                <th> Current Company </th>
+                <th> Profession </th>
+                <th> Skills </th>
+                <th> Personal Description </th>
+                <th> Past Projects </th>
+            </tr>
+
+            <tr>
+                {% for item in data %}
+                <td> {{item[0]}} </td>
+                <td> {{item[1]}} </td>
+                <td> {{item[2]}} </td>
+                <td> {{item[3]}} </td>
+                <td> {{item[4]}} </td>
+                <td> {{item[5]}} </td>
+                <td> {{item[6]}} </td>
+                <td> {{item[7]}} </td>
+                <td> {{item[8]}} </td>
+                {% endfor %}
+            </tr>
+        </table>
+    </body>
+</html>

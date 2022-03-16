@@ -1,0 +1,89 @@
+<html>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
+    
+    <style>
+        .header h1
+        {
+           font-family: 'Audiowide', serif;
+           font-size: 36px;
+           font-weight: 400;
+           background-color: white;
+        }
+    </style>
+
+    <div class="header h1">
+        <p style="text-align:center"> <img src="/static/professional_logo.jpg" alt="logo" width="200" height="200"> </p>
+        <h1 style="text-align:center" font="Audiowide"> KnowPros </h1>
+    </div>
+
+    <br>
+
+    <h1 style="text-align:center"> Profile Creation </h1>
+
+    <p> Please fill in the following fields marked with a <span style="color:red">*</span>. These are required for profile creation. </p>
+
+    <body>
+        <form method="POST">
+            {% for item in data %}
+            <p>
+                <label for="fName"> First Name: <span style="color:red">*</span> </label>
+                <br>
+                <input type="text" name="fName" id="fName" required value={{item[0]}}>
+            </p>
+
+            <p>
+                <label for="mName"> Middle Name(s): </label>
+                <br>
+                <input type="text" name="mNames" id="mNames" value={{item[1]}}>
+            </p>
+
+            <p>
+                <label for="lName"> Last Name: <span style="color:red">*</span> </label>
+                <br>
+                <input type="text" name="lName" id="lName" required value={{item[2]}}>
+            </p>
+
+            <p>
+                <label for="email"> Email: <span style="color:red">*</span> </label>
+                <br>
+                <input type="text" name="email" id="email" required value={{item[3]}}>
+            </p>
+
+            <p>
+                <label for="curComp"> Current Company: </label>
+                <br>
+                <input type="text" name="curComp" id="curComp" value={{item[4]}}>
+            </p>
+
+            <p>
+                <label for="prof"> Profession: <span style="color:red">*</span> </label>
+                <br>
+                <input type="text" name="prof" id="prof" required value={{item[5]}}>
+            </p>
+
+            <p>
+                <label for="skills"> Skills: </label>
+                <br>
+                <textarea name="skills" id="skills" rows="10" cols="145">{{item[6]}}</textarea>
+            </p>
+
+            <p>
+                <label for="desc"> Description of yourself: </label>
+                <br>
+                <textarea name="desc" id="dec" rows="10" cols="145">{{item[7]}}</textarea>
+            </p>
+
+            <p>
+                <label for="proj"> Past Projects: </label>
+                <br>
+                <textarea name="proj" id="proj" rows="10" cols="145">{{item[8]}}</textarea>
+            </p>
+
+            <br>
+
+            <p> <button type="submit"> Submit </button> </p>
+
+            {% endfor %}
+        </form>
+    </body>
+</html>
