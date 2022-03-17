@@ -1,0 +1,42 @@
+<html>
+    <!-- <link rel="stylesheet" href="{{url_for('static', filename='postAnswer.html')}}"> -->
+
+    <body>
+        {% for item in question %}
+            <!--<p>{{item}}</p>-->
+
+            <p>
+                {{item[0]}}     <!-- Title -->
+                <br>
+                {{item[1]}}     <!-- Username -->
+                <br>
+                {{item[2]}}     <!-- Body -->
+                <br>
+                {{item[3]}}     <!-- Timestamp -->
+            </p>
+        {% endfor %}
+
+        <br>
+
+        {% for item in answers %}
+            <!--<p>{{item}}</p>-->
+
+            <p>
+                {{item[0]}}     <!-- Username -->
+                <br>
+                {{item[1]}}     <!-- Body -->
+                <br>
+                {{item[2]}}     <!-- Timestamp -->
+            </p>
+        {% endfor %}
+
+        <br>
+
+        <p>
+            <!-- Should include question ID in url -->
+            {% if qid %}
+            <a href="../answer/{{qid}}"> <button type="button"> ANSWER QUESTION </button> </a>
+            {% endif %}
+        </p>
+    </body>
+</html>

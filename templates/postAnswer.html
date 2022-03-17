@@ -1,0 +1,37 @@
+<html>
+    <style>
+        th{
+            text-align: left;
+        }
+    </style>
+
+    <body>
+        {% for item in question %}
+            <table>
+                <tr>
+                    <th>{{item[0]}}</th>     <!-- Question Title -->
+                </tr>
+                
+                <tr>
+                    <th>{{item[1]}}</th>    <!-- Question Author -->
+                </tr>
+                
+                <tr>
+                    <th>{{item[2]}}</th>     <!-- Question Body -->
+                </tr>
+            </table>
+        {% endfor %}
+
+        <br>
+
+        <form method="post">
+            <p>
+                <textarea name="ans" id="ans" rows="30" cols="145" autocomplete="off" required></textarea>
+            </p>
+
+            <br>
+
+            <button type="submit"> Submit </button>
+        </form>
+    </body>
+</html>
