@@ -1,17 +1,5 @@
-# To run server:
-#   1. cd "C:\Users\coolp\Documents\Dylan\School\Y3 - 2022 WINTER\SENG 401 - Software Architecture\Project\test"
-#   2. python -m venv test
-#   3. scripts\activate
-#   4. python -m flask run
-
-# Installation commands:
-#   > python -m pip install flask
-#   > python -m pip install flask_mysqldb
-
 from flask import Flask, render_template, request, redirect, jsonify
 from flask_mysqldb import MySQL
-from datetime import datetime
-import json, sys
 
 app=Flask(__name__)
 
