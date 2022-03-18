@@ -1,6 +1,6 @@
 #Created by: Chloe Bouchard
 #File name: Login.py
-#Version: 1.0
+#Version: 1.1
 
 from App import app
 from Database import mysql
@@ -9,16 +9,18 @@ debug = True
 
 class Login:
     #Ctor for Login
-    def __init__(self, username, password, connection):
+    def __init__(self, username, password):
         self.username = username
         self.password = password
-        self.connection = connection
+       # self.connection = connection
         
 
     #function to execute an SQL Query
     #Returns the Query result
     def executeQuery(self,query):
-        cursor = self.connection.cursor()
+        connection = mysql.connector.connect(host = "localhost", database = 'newdb', user = "root",passwd = "replace with your own password") #make sure to change password to correct one
+
+        cursor = connection.cursor()
         cursor.execute(query)
         result = cursor.fetchall()
         return result
@@ -78,11 +80,12 @@ class Login:
     
 
 if(debug == True):
-    db_connection = mysql.connector.connect(host = "localhost", database = 'newdb', user = "root",passwd = "TestPass") #make sure to change password to correct one
+    # db_connection = mysql.connection.cursor()
+    # connection = mysql.connector.connect(host = "localhost", database = 'newdb', user = "root",passwd = "M0nkey.G1rlisme") #make sure to change password to correct one
 
     #---------------------------TEST 1---------------------------------------
     print("TEST 1")
-    myLogin = Login('tester1', 'password1', db_connection) #create Login object
+    myLogin = Login('tester1', 'password1') #create Login object
     myLogin.add_login()    #add object to database table
 
     if(myLogin.authenticate() == -1): #authentication should work
@@ -94,7 +97,7 @@ if(debug == True):
 
     #--------------------------TEST 2-----------------------------------------------
     print("\nTEST 2")
-    myLogin2 = Login('chloe646', 'other!',db_connection) #this Login is not added to the table, so it should fail the authentication
+    myLogin2 = Login('chloe646', 'other!') #this Login is not added to the table, so it should fail the authentication
     if(myLogin2.authenticate() == -1): 
         print("The password does not match the username")
     elif (myLogin2.authenticate() == 0):
@@ -104,10 +107,10 @@ if(debug == True):
 
     #---------------------------TEST 3--------------------------------------------
     print("\nTEST 3")
-    myLogin3 = Login('tester1', 'password1',db_connection)  #this should not work, since tester1 already exists
+    myLogin3 = Login('tester1', 'password1')  #this should not work, since tester1 already exists
     myLogin3.add_login()
 
     #---------------------------TEST 4---------------------------------------------
     print("\nTEST 4")
-    myLogin4 = Login('tester3', 'password1',db_connection)  #this should be allowed
+    myLogin4 = Login('tester3', 'password1')  #this should be allowed
     myLogin4.add_login()
