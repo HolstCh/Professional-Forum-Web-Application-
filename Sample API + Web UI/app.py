@@ -17,8 +17,8 @@ app=Flask(__name__)
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'draGGun.!382'
-app.config['MYSQL_DB'] = 'seng401'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = ''
 
 mysql=MySQL(app)
 
@@ -31,9 +31,11 @@ def display():
     if request.method == "GET":
         return render_template("test.html", data=results)
     
+    # Check if API sent any data
     elif request.method == "POST":
         input=request.get_json() 
 
+        # If post method was from API...
         if input:
             dataAsDict={
                 "Key": input["Key"], 
@@ -42,6 +44,7 @@ def display():
 
             return jsonify(dataAsDict)
 
+        # If post method was from HTML element...
         else:
             return render_template("test.html", data=results, msg="Button pressed!")
 # end of def
