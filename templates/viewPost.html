@@ -10,15 +10,14 @@
         <style>
             .header h1 /* target header h1 */
             {
-            font-family: 'Audiowide', serif;
-            font-size: 17px;
-            padding-top: 0.93em;
-            font-weight: 400;
-            background-color: #ffffff;
-            height: 100%;
-            margin: 0 auto 0 10px;
+                font-family: 'Audiowide', serif;
+                font-size: 17px;
+                padding-top: 0.93em;
+                font-weight: 400;
+                background-color: #ffffff;
+                height: 100%;
+                margin: 0 auto 0 10px;
             }
-
             .logo
             {
                 padding-top:20px;
@@ -40,7 +39,7 @@
                 height:0;
                 text-align: center;
                 line-height:0;
-                float: right;
+                float:right;
                 position:relative;
                 top:-28px;
                 margin: 0 auto 0 5px;
@@ -180,6 +179,13 @@
                 overflow: hidden;
                 resize: none;
             }
+
+            table, tr
+            {
+                border: 2px solid black;
+                padding: 10px;
+                text-align: left;
+            }
         </style>
 
         <title></title>
@@ -205,72 +211,66 @@
         </div>
 
         <div class="sideNav">
-            <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
-            <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
-            <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
+            <a href="#Home"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="#My Profile"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
+            <a href="#Top Profiles"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
+            <a href="#About Us"><i class="ASr"></i> ?</a>
+            <a href="#Contact"><i class="C"></i> ?</a>
         </div>
 
         <div class ="mainContentContainer">
-            <form method="POST">
-                {% for item in data %}
-                    <p>
-                        <label for="fName"> First Name: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="fName" id="fName" required value={{item[0]}}>
-                    </p>
-        
-                    <p>
-                        <label for="mName"> Middle Name(s): </label>
-                        <br>
-                        <input type="text" name="mNames" id="mNames" value={{item[1]}}>
-                    </p>
-        
-                    <p>
-                        <label for="lName"> Last Name: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="lName" id="lName" required value={{item[2]}}>
-                    </p>
-        
-                    <p>
-                        <label for="email"> Email: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="email" id="email" required value={{item[3]}}>
-                    </p>
-        
-                    <p>
-                        <label for="curComp"> Current Company: </label>
-                        <br>
-                        <input type="text" name="curComp" id="curComp" value={{item[4]}}>
-                    </p>
-        
-                    <p>
-                        <label for="prof"> Profession: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="prof" id="prof" required value={{item[5]}}>
-                    </p>
-        
-                    <p>
-                        <label for="skills"> Skills: </label>
-                        <br>
-                        <textarea name="skills" id="skills" oninput="adjustArea(this)">{{item[6]}}</textarea>
-                    </p>
-        
-                    <p>
-                        <label for="desc"> Description of yourself: </label>
-                        <br>
-                        <textarea name="desc" id="desc" oninput="adjustArea(this)">{{item[7]}}</textarea>
-                    </p>
-        
-                    <p>
-                        <label for="proj"> Past Projects: </label>
-                        <br>
-                        <textarea name="proj" id="proj" oninput="adjustArea(this)">{{item[8]}}</textarea>
-                    </p>
-        
-                    <br>
-        
-                    <p> <button type="submit"> Submit </button> </p>
-                {% endfor %}
+            <h2> Question </h2>
+
+            {% for item in question %}
+            <p>
+                {{item[0]}}     <!-- Question Title -->
+                <br>
+                {{item[1]}} &nbsp {{item[2]}}     <!-- Question and Timestamp -->
+                <br>
+                {{item[3]}}     <!-- Question Profession -->
+                <br>
+                {{item[4]}}     <!-- Question Tags -->
+
+                <table>
+                    <tr>
+                        <td>
+                            {{item[5]}}     <!-- Question Body -->
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            {% endfor %}
+
+            <br>
+            <br>
+
+            <h2> Answers </h2>
+
+            {% for item in answers %}
+            <p>
+                {{item[0]}}     <!-- Answer Author -->
+                <br>
+                {{item[1]}}     <!-- Answer Timestamp -->
+
+                <table>
+                    <tr>
+                        <td>
+                            {{item[2]}}      <!-- Answer Body -->
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            {% endfor %}
+
+            <br>
+
+            <form method="post">
+                <h3> POST ANSWER </h3>
+                <textarea name="ans" id="ans" autocomplete="off" oninput="adjustArea(this)" required></textarea>
+                
+                <br>
+
+                <button type="button"> SUBMIT </button>
             </form>
         </div>
 
@@ -299,4 +299,3 @@
         </script>
     </body>
 </html>
-

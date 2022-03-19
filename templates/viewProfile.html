@@ -167,18 +167,31 @@
                 margin-bottom: 10px;
             }
 
-            textarea
-            {
-                width: calc(100vw - 250px);
-                height: 32px;
-                overflow: hidden;
-                padding-top: 10px;
+            table{
+                border: 1px solid black;
+                margin-top: 30px; 
+            }
+
+            th, td{
+                border: 1px solid black;
                 padding-left: 10px;
                 padding-right: 10px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
 
-                display: block;
-                overflow: hidden;
-                resize: none;
+            h3 span     /* can rename to "item"*/
+            {
+                display: inline-block;
+                font-weight: normal;
+                font-size: 20px;
+            }
+
+            .label
+            {
+                display: inline-block;
+                font-size: 16;
+                font-weight: bold;
             }
         </style>
 
@@ -208,95 +221,37 @@
             <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
             <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
             <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
+            
+            <!--
+            <a href="#About Us"><i class="ASr"></i> ?</a>
+            <a href="#Contact"><i class="C"></i> ?</a>
+            -->
         </div>
 
         <div class ="mainContentContainer">
-            <form method="POST">
-                {% for item in data %}
-                    <p>
-                        <label for="fName"> First Name: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="fName" id="fName" required value={{item[0]}}>
-                    </p>
-        
-                    <p>
-                        <label for="mName"> Middle Name(s): </label>
-                        <br>
-                        <input type="text" name="mNames" id="mNames" value={{item[1]}}>
-                    </p>
-        
-                    <p>
-                        <label for="lName"> Last Name: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="lName" id="lName" required value={{item[2]}}>
-                    </p>
-        
-                    <p>
-                        <label for="email"> Email: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="email" id="email" required value={{item[3]}}>
-                    </p>
-        
-                    <p>
-                        <label for="curComp"> Current Company: </label>
-                        <br>
-                        <input type="text" name="curComp" id="curComp" value={{item[4]}}>
-                    </p>
-        
-                    <p>
-                        <label for="prof"> Profession: <span style="color:red">*</span> </label>
-                        <br>
-                        <input type="text" name="prof" id="prof" required value={{item[5]}}>
-                    </p>
-        
-                    <p>
-                        <label for="skills"> Skills: </label>
-                        <br>
-                        <textarea name="skills" id="skills" oninput="adjustArea(this)">{{item[6]}}</textarea>
-                    </p>
-        
-                    <p>
-                        <label for="desc"> Description of yourself: </label>
-                        <br>
-                        <textarea name="desc" id="desc" oninput="adjustArea(this)">{{item[7]}}</textarea>
-                    </p>
-        
-                    <p>
-                        <label for="proj"> Past Projects: </label>
-                        <br>
-                        <textarea name="proj" id="proj" oninput="adjustArea(this)">{{item[8]}}</textarea>
-                    </p>
-        
-                    <br>
-        
-                    <p> <button type="submit"> Submit </button> </p>
-                {% endfor %}
-            </form>
+            <!--
+            <a href="../edit/{{username}}">
+                <button style="float: right; margin-top: 20px;"> EDIT PROFILE </button>
+            </a>
+            -->
+
+            {% for item in data %}
+                <h3>First name: <span class="item">{{item[0]}}</span> </h3>
+                <h3>Middle name(s): <span>{{item[1]}}</span> </h3>
+                <h3>Last name: <span>{{item[2]}}</span> </h3>
+                <h3>Email: <span>{{item[3]}}</span> </h3>
+                <h3>Profession: <span>{{item[5]}}</span> </h3>
+                <h3>Current Company: <span>{{item[4]}}</span> </h3>
+                <h3>Skills: <span>{{item[6]}}</span> </h3>
+                <h3>Personal Description: <span>{{item[7]}}</span> </h3>
+                <h3>Past Projects: <span>{{item[8]}}</span> </h3>
+            {% endfor %}
+            
+            <br>
+
+            <h3>Past Work Experience</h3>
+            <p><i>[!!] WORK IN PROGRESS [!!]</i></p>
         </div>
-
-        <script>
-            // for moving window with scroll bar and fixing header in the same place
-            window.onscroll = function() {myFunction()};
-            const header = document.getElementById("main_header");
-            const fixed = header.offsetTop;
-
-            function myFunction()
-            {
-                if (window.pageYOffset < fixed)
-                {
-                    header.classList.add("fixed");
-                }
-                else
-                {
-                    header.classList.add("fixed");
-                }
-            }
-
-            function adjustArea(element){
-                element.style.height="1px";
-                element.style.height=element.scrollHeight + "px";
-            }
-        </script>
     </body>
 </html>
 
