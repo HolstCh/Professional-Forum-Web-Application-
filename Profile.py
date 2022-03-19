@@ -21,28 +21,14 @@ def createProfile(username):
         pastProj=request.form.get("proj", None)
 
         cursor=mysql.connection.cursor()
-        cursor.execute("""CREATE TABLE """ + username + """_profile (
-           firstName text not null, 
-           middleNames text, 
-           lastName text not null, 
-           email text not null, 
-           currentCompany text, 
-           profession text not null,
-           skills text, 
-           description text, 
-           projects text
-        )""")
-
-        mysql.connection.commit()
-
-        cursor.execute("""INSERT INTO """ + username + """_profile (firstName, middleNames, lastName, email, currentCompany,
-            profession, skills, description, projects) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)""", (fName, mNames, lName,
-            email, curComp, prof, skills, desc, pastProj))
+        cursor.execute("""INSERT INTO Profiles (username, firstName, middleNames, lastName, email, currentCompany,
+            profession, skills, description, projects) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (username,
+            fName, mNames, lName, email, curComp, prof, skills, desc, pastProj))
 
         mysql.connection.commit()
         cursor.close()
 
-        return "<h1 style='color:green'> Record added successfully! </h1>"
+        return redirect("login.html")
     # end of if
 #end of def
 
@@ -52,6 +38,7 @@ def display(username):
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT * FROM " + username + "_profile")
         result=cursor.fetchall()
+        cursor.close()
         
         return render_template("showData.html", data=result)
 # end of def
@@ -62,6 +49,7 @@ def editProfile(username):
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT * FROM " + username + "_profile")
         result=cursor.fetchall()
+        cursor.close()
 
         return render_template("editProfile.html", data=result)
     # end of if
@@ -78,11 +66,11 @@ def editProfile(username):
         pastProj=request.form.get("proj", None)
 
         cursor.mysql.connection.cursor()
-        cursor.execute("""UPDATE""" + username + """_profile SET firstName=%s, middleNames=%s, lastName=%s, email=%s, 
+        cursor.execute("""UPDATE Profiles SET firstName=%s, middleNames=%s, lastName=%s, email=%s, 
             currentCompany=%s, profession=%s, skills=%s, description=%s, projects=%s""", (fName, mNames, lName, email, 
             curComp, prof, skills, desc, pastProj))
 
-        return render_template("<h1 style='color:green'> Profile updated successfully! </h1>")
+        return redirect("../view/" + username)      # Redirects to "localhost:5000/profile/view/<username>"
         # end of if
 # end of def
     
