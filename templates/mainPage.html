@@ -1,234 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <style>
-    .header h1 /* target header h1 */
-    {
-       font-family: 'Audiowide', serif;
-       font-size: 17px;
-       padding-top: 0.93em;
-       font-weight: 400;
-       background-color: #ffffff;
-       height: 100%;
-       margin: 0 auto 0 10px;
-    }
-    .logo
-    {
-        padding-top:20px;
-    }
+      .header h1 /* target header h1 */
+      {
+         font-family: 'Audiowide', serif;
+         font-size: 17px;
+         padding-top: 0.93em;
+         font-weight: 400;
+         background-color: #ffffff;
+         height: 100%;
+         margin: 0 auto 0 10px;
+      }
+      .logo
+      {
+          padding-top:20px;
+      }
 
-    .headerButton /* target id headerButton */
-    {
+      .headerButton /* target id headerButton */
+      {
+          text-decoration: none;
+          font-family: 'Roboto Slab', serif;
+          font-size: 19px;
+          font-weight: 590;
+          border-radius: 1000px;
+          padding: 14px;
+          background-color: #ef4949;
+          color: #0c0c0c;
+          border: 3px solid #070707;
+          transition-duration: 0.4s;
+          display: inline-block;
+          height:0;
+          text-align: center;
+          line-height:0;
+          float:right;
+          position:relative;
+          top:-28px;
+          margin: 0 auto 0 5px;
+      }
+
+      .headerButton:hover
+      {
+          color: #0c0c0c;
+          background-color: #c9dbee;
+          box-shadow: 0 1px #666;
+          transform: translateY(5px);
+      }
+
+      #basicSearch /* target id basicSearch */
+      {
+          width: 220px;
+          height: 34px;
+          box-sizing: border-box; /* element padding layout */
+          border: 3px solid #151414;
+          border-radius: 2100px;
+          font-size: 16px;
+          background-color: #c9dbee;
+          background-image: url('/static/search_bar_icon.png');
+          background-size: 29px 29px;
+          background-position: 0 -0.5px;
+          background-repeat: no-repeat;
+          padding: 12px 20px 11px 40px;
+          -webkit-transition: width 0.4s ease-in-out; /* enable width variation of search bar */
+          transition: width 0.4s ease-in-out;
+          position: absolute;
+          left:165px; top:30px;
+      }
+
+      #basicSearch:focus /* when input text type gets focus, changes width */
+      {
+        width: 50.5%; /* percentage of search bar width change */
+      }
+
+      nav
+      {
+        background-color: #c9dbee;
+      }
+
+      .sideNav
+      {
+        height: 100%;
+        width: 183px;
+        position: fixed;
+        z-index: 1;
+        top: 92px;
+        left: -12px;
+        background-color: #d34141;
+        overflow-x: hidden;
+        padding-top: 16px;
+      }
+
+      .sideNav a
+      {
+        padding: 20px 8px 20px 27px;
         text-decoration: none;
         font-family: 'Roboto Slab', serif;
         font-size: 19px;
-        font-weight: 590;
-        border-radius: 1000px;
-        padding: 14px;
-        background-color: #ef4949;
-        color: #0c0c0c;
-        border: 3px solid #070707;
-        transition-duration: 0.4s;
-        display: inline-block;
-        height:0;
-        text-align: center;
-        line-height:0;
-        float:right;
-        position:relative;
-        top:-28px;
-        margin: 0 auto 0 5px;
-    }
-
-    .headerButton:hover
-    {
-        color: #0c0c0c;
-        background-color: #c9dbee;
-        box-shadow: 0 1px #666;
-        transform: translateY(5px);
-    }
-
-    #basicSearch /* target id basicSearch */
-    {
-        width: 220px;
-        height: 34px;
-        box-sizing: border-box; /* element padding layout */
-        border: 3px solid #151414;
-        border-radius: 2100px;
-        font-size: 16px;
-        background-color: #c9dbee;
-        background-image: url('/static/search_bar_icon.png');
-        background-size: 29px 29px;
-        background-position: 0 -0.5px;
-        background-repeat: no-repeat;
-        padding: 12px 20px 11px 40px;
-        -webkit-transition: width 0.4s ease-in-out; /* enable width variation of search bar */
-        transition: width 0.4s ease-in-out;
-        position: absolute;
-        left:165px; top:30px;
-    }
-
-    #basicSearch:focus /* when input text type gets focus, changes width */
-    {
-      width: 50.5%; /* percentage of search bar width change */
-    }
-
-    nav
-    {
-      background-color: #c9dbee;
-    }
-
-    .sideNav
-    {
-      height: 100%;
-      width: 183px;
-      position: fixed;
-      z-index: 1;
-      top: 92px;
-      left: -12px;
-      background-color: #d34141;
-      overflow-x: hidden;
-      padding-top: 16px;
-    }
-
-    .sideNav a
-    {
-      padding: 20px 8px 20px 27px;
-      text-decoration: none;
-      font-family: 'Roboto Slab', serif;
-      font-size: 19px;
-      color: #151414;
-      display: block;
-    }
-
-    .sideNav a:hover
-    {
-      background-color: #c9dbee;
-    }
-
-    @media screen and (max-height: 9223372036854775807px)
-    {
-       .sideNav {padding-top: 0;}
-       .sidebar a {font-size: 18px;}
-    }
-
-    /* Main Scroll Bar */
-    ::-webkit-scrollbar
-    {
-      width: 20px;
-    }
-
-    ::-webkit-scrollbar-track
-    {
-      background: #f1f1f1;
-    }
-
-    ::-webkit-scrollbar-thumb
-    {
-      background: #d34141;
-    }
-
-    ::-webkit-scrollbar-thumb:hover
-    {
-      background: #504d4d;
-    }
-
-    /* The fixed class is added to the header with JS when it reaches its scroll position */
-    .fixed
-    {
-      position: fixed;
-      top: 0;
-      width: 100%
-    }
-
-    /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-    .fixed + .mainContentContainer +.header h1 + .headerButton + #basicSearch
-    {
-      padding-top: 32px;
-    }
-
-    .mainContentContainer
-    {
-        overflow: hidden;
-        background-color: #ffffff;
-        border-radius: 5px;
-        padding-top: 70px;
-        height: auto;
-        width: auto;
-        margin-left: 175px;
-    }
-
-    </style>
-    <title>
-    </title>
-</head>
-<body>
-  <div class = "header h1 fixed" id="main_header" style="background-color: #ffffff">
-      <div class = "logo">
-        <img src="/static/professional_logo.jpg" width="50" height="50" style="float:left" alt="logo">
-      </div>
-      <h1>KnowPros</h1>
-      <form autocomplete="off">
-          <label>
-              <input type="text" name="basicSearch" id ="basicSearch" placeholder="Search KnowPros...">
-          </label>
-          <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
-          <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
-          <a href = "" class = "headerButton" style=margin-left:5px>Advanced Search</a>
-      </form>
-  </div>
-  <div class="sideNav">
-    <a href="#Home"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
-    <a href="#My Profile"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
-    <a href="#Top Profiles"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
-    <a href="#About Us"><i class="ASr"></i> ?</a>
-    <a href="#Contact"><i class="C"></i> ?</a>
-  </div>
-  <div class ="mainContentContainer">
-    <p>Hello ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Hi ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-    <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
-  </div>
-  <script>
-    // for moving window with scroll bar and fixing header in the same place
-    window.onscroll = function() {myFunction()};
-    const header = document.getElementById("main_header");
-    const fixed = header.offsetTop;
-
-    function myFunction()
-    {
-      if (window.pageYOffset < fixed)
-      {
-        header.classList.add("fixed");
+        color: #151414;
+        display: block;
       }
-      else
+
+      .sideNav a:hover
       {
-        header.classList.add("fixed");
+        background-color: #c9dbee;
       }
-    }
-  </script>
-</body>
+
+      @media screen and (max-height: 9223372036854775807px)
+      {
+         .sideNav {padding-top: 0;}
+         .sidebar a {font-size: 18px;}
+      }
+
+      /* Main Scroll Bar */
+      ::-webkit-scrollbar
+      {
+        width: 20px;
+      }
+
+      ::-webkit-scrollbar-track
+      {
+        background: #f1f1f1;
+      }
+
+      ::-webkit-scrollbar-thumb
+      {
+        background: #d34141;
+      }
+
+      ::-webkit-scrollbar-thumb:hover
+      {
+        background: #504d4d;
+      }
+
+      /* The fixed class is added to the header with JS when it reaches its scroll position */
+      .fixed
+      {
+        position: fixed;
+        top: 0;
+        width: 100%
+      }
+
+      /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+      .fixed + .mainContentContainer +.header h1 + .headerButton + #basicSearch
+      {
+        padding-top: 32px;
+      }
+
+      .mainContentContainer
+      {
+          overflow: hidden;
+          background-color: #ffffff;
+          border-radius: 5px;
+          padding-top: 70px;
+          height: auto;
+          width: auto;
+          margin-left: 175px;
+      }
+      </style>
+    
+      <title>
+      </title>
+  </head>
+  
+  <body>
+    <div class = "header h1 fixed" id="main_header" style="background-color: #ffffff">
+        <div class = "logo">
+          <img src="/static/professional_logo.jpg" width="50" height="50" style="float:left" alt="logo">
+        </div>
+        <h1>KnowPros</h1>
+        <form autocomplete="off">
+            <label>
+                <input type="text" name="basicSearch" id ="basicSearch" placeholder="Search KnowPros...">
+            </label>
+            <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
+            <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
+            <a href = "" class = "headerButton" style=margin-left:5px>Advanced Search</a>
+        </form>
+    </div>
+
+    <div class="sideNav">
+      <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+      <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
+      <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
+      <!--
+      <a href="#About Us"><i class="ASr"></i> ?</a>
+      <a href="#Contact"><i class="C"></i> ?</a>
+      -->
+    </div>
+
+    <div class ="mainContentContainer">
+      <p>Hello ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Hi ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+      <p>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum </p>
+    </div>
+
+    <script>
+      // for moving window with scroll bar and fixing header in the same place
+      window.onscroll = function() {myFunction()};
+      const header = document.getElementById("main_header");
+      const fixed = header.offsetTop;
+
+      function myFunction()
+      {
+        if (window.pageYOffset < fixed)
+        {
+          header.classList.add("fixed");
+        }
+        else
+        {
+          header.classList.add("fixed");
+        }
+      }
+    </script>
+  </body>
 </html>
 
