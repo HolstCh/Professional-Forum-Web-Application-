@@ -1,5 +1,6 @@
 from Database import mysql
 from App import app
+from datetime import datetime
 
 def viewPost(id):
     if request.method == "GET":
