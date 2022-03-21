@@ -1,9 +1,9 @@
-from Database import mysql
-from App import app
 from datetime import datetime
 
 class Posts:
     def viewPost(self, id):
+        from Database import mysql
+        
         cursor=mysql.connection.cursor()
         cursor.execute("""SELECT Title, Username, Timestamp, Profession, ProfessionCategory, Body FROM 
             Question_Post WHERE QuestionPostID=""" + id)
@@ -17,6 +17,9 @@ class Posts:
     # end of def
 
     def postQuestion(self, username):
+        from App import request
+        from Database import mysql
+        
         title=request.form.get("title", None)
         body=request.form.get("ques", None)
         profession=request.form.get("prof", None)
