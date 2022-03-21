@@ -1,15 +1,9 @@
-from flask import Flask, render_template, request, redirect
-from App import app
-from Database import mysql
-
-# Getting profile data from HTML and creating a new MySQL table in database to store data
-def createProfile(username):
-    if request.method == "GET":
-        # Sending empty data ONCE to forms
-        return render_template("editProfile.html", data=" ")
-    # end of if
-
-    if request.method == "POST":
+class Profile:
+    # Getting profile data from HTML and creating a new MySQL table in database to store data
+    def createProfile(self, username):
+        from App import app, request
+        from Database import mysql
+        
         fName=request.form.get("fName", None)
         mNames=request.form.get("mNames", None)
         lName=request.form.get("lName", None)
@@ -19,7 +13,7 @@ def createProfile(username):
         skills=request.form.get("skills", None)
         desc=request.form.get("desc", None)
         pastProj=request.form.get("proj", None)
-
+        
         cursor=mysql.connection.cursor()
         cursor.execute("""INSERT INTO Profiles (username, firstName, middleNames, lastName, email, currentCompany,
             profession, skills, description, projects) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (username,
@@ -27,34 +21,37 @@ def createProfile(username):
 
         mysql.connection.commit()
         cursor.close()
+    #end of def
 
-        return redirect("login.html")
-    # end of if
-#end of def
-
-# Display profile in HTML
-def display(username):
-    if request.method == "GET":
-        cursor=mysql.connection.cursor()
-        cursor.execute("SELECT * FROM " + username + "_profile")
-        result=cursor.fetchall()
-        cursor.close()
+    # Display profile in HTML
+    def display(self, username):
+        from Database import mysql
         
-        return render_template("showData.html", data=result)
-# end of def
-
-# Get data from MySQL table and allow user to edit it, where any edits will be sent to MySQL
-def editProfile(username):
-    if request.method == "GET":
         cursor=mysql.connection.cursor()
-        cursor.execute("SELECT * FROM " + username + "_profile")
+        cursor.execute("SELECT * FROM Profiles")
         result=cursor.fetchall()
         cursor.close()
 
-        return render_template("editProfile.html", data=result)
-    # end of if
+        return result
+    # end of def
+
+    # Get data from MySQL table and allow user to edit it, where any edits will be sent to MySQL
+    def displayEditableProfile(self, username):
+        from App import app, request
+        from Database import mysql
+        
+            cursor=mysql.connection.cursor()
+            cursor.execute("SELECT * FROM Profiles")
+            result=cursor.fetchall()
+            cursor.close()
+
+            return result
+    # end of def
     
-    if request.method == "POST":
+    def pushEdits(self, username):
+        from App import app, request
+        from Database import mysql
+        
         fName=request.form.get("fName", None)
         mNames=request.form.get("mNames", None)
         lName=request.form.get("lName", None)
@@ -70,7 +67,5 @@ def editProfile(username):
             currentCompany=%s, profession=%s, skills=%s, description=%s, projects=%s""", (fName, mNames, lName, email, 
             curComp, prof, skills, desc, pastProj))
 
-        return redirect("../view/" + username)      # Redirects to "localhost:5000/profile/view/<username>"
-        # end of if
-# end of def
-    
+        cursor.close()
+    # end of def
