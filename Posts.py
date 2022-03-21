@@ -12,9 +12,7 @@ class Posts:
         cursor.execute("SELECT Username, Timestamp, Body FROM Answer_Post WHERE QID=" + id)
         result2=cursor.fetchall()
         
-        results=[result1, result2]
-
-        return results      # Return list of result from MySQL queries
+        return zip(result1, result2)      # Return list of result from MySQL queries
         # end of if
     # end of def
 
