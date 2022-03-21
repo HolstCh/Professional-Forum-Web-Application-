@@ -1,7 +1,7 @@
 class Profile:
     # Getting profile data from HTML and creating a new MySQL table in database to store data
     def createProfile(self, username):
-        from App import app, request
+        from App import request
         from Database import mysql
         
         fName=request.form.get("fName", None)
@@ -37,7 +37,7 @@ class Profile:
 
     # Get data from MySQL table and allow user to edit it, where any edits will be sent to MySQL
     def displayEditableProfile(self, username):
-        from App import app, request
+        from App import request
         from Database import mysql
         
             cursor=mysql.connection.cursor()
