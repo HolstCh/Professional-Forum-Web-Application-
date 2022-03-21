@@ -19,10 +19,9 @@ class PostHistory:
                     =Answer_Post.QID WHERE Answer_Post.Username=%s""", (username,))
 
                 results2=cursor.fetchall()
-                data=zip(results1, results2)
 
-                return data
+                return zip(results1, results2)      # Bundle results from MySQL query
 
             else:
-                return None
+                return None     # If first query was empty, return none
     # end of def
