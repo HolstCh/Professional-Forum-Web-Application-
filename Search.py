@@ -11,14 +11,14 @@ def search():
 
         return redirect("./query=" + query)
 
-def searchResults(query):
+def searchResults(query, username):
     if request.method == "GET":
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT * FROM Question_Post WHERE Body LIKE '%" + query + "%' OR Title LIKE '%" + query + "%'")
         results=cursor.fetchall()
 
         if results:
-            return render_template("searchResults.html", data=results)
+            return render_template("searchResults.html", data=results, username=username)
 
         else:
             return render_template("searchResults.html", msg="No results...")
