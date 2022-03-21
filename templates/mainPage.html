@@ -74,40 +74,40 @@
 
       #basicSearch:focus /* when input text type gets focus, changes width */
       {
-        width: 50.5%; /* percentage of search bar width change */
+          width: 50.5%; /* percentage of search bar width change */
       }
 
       nav
       {
-        background-color: #c9dbee;
+          background-color: #c9dbee;
       }
 
       .sideNav
       {
-        height: 100%;
-        width: 183px;
-        position: fixed;
-        z-index: 1;
-        top: 92px;
-        left: -12px;
-        background-color: #d34141;
-        overflow-x: hidden;
-        padding-top: 16px;
+          height: 100%;
+          width: 183px;
+          position: fixed;
+          z-index: 1;
+          top: 92px;
+          left: -12px;
+          background-color: #d34141;
+          overflow-x: hidden;
+          padding-top: 16px;
       }
 
       .sideNav a
       {
-        padding: 20px 8px 20px 27px;
-        text-decoration: none;
-        font-family: 'Roboto Slab', serif;
-        font-size: 19px;
-        color: #151414;
-        display: block;
+          padding: 20px 8px 20px 27px;
+          text-decoration: none;
+          font-family: 'Roboto Slab', serif;
+          font-size: 19px;
+          color: #151414;
+          display: block;
       }
 
       .sideNav a:hover
       {
-        background-color: #c9dbee;
+          background-color: #c9dbee;
       }
 
       @media screen and (max-height: 9223372036854775807px)
@@ -119,36 +119,36 @@
       /* Main Scroll Bar */
       ::-webkit-scrollbar
       {
-        width: 20px;
+          width: 20px;
       }
 
       ::-webkit-scrollbar-track
       {
-        background: #f1f1f1;
+          background: #f1f1f1;
       }
 
       ::-webkit-scrollbar-thumb
       {
-        background: #d34141;
+          background: #d34141;
       }
 
       ::-webkit-scrollbar-thumb:hover
       {
-        background: #504d4d;
+          background: #504d4d;
       }
 
       /* The fixed class is added to the header with JS when it reaches its scroll position */
       .fixed
       {
-        position: fixed;
-        top: 0;
-        width: 100%
+          position: fixed;
+          top: 0;
+          width: 100%
       }
 
       /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
       .fixed + .mainContentContainer +.header h1 + .headerButton + #basicSearch
       {
-        padding-top: 32px;
+          padding-top: 32px;
       }
 
       .mainContentContainer
@@ -172,11 +172,14 @@
         <div class = "logo">
           <img src="/static/professional_logo.jpg" width="50" height="50" style="float:left" alt="logo">
         </div>
+      
         <h1>KnowPros</h1>
-        <form autocomplete="off">
+      
+        <form method="post" autocomplete="off">
             <label>
                 <input type="text" name="basicSearch" id ="basicSearch" placeholder="Search KnowPros...">
             </label>
+          
             <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
             <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
         </form>
