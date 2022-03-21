@@ -190,18 +190,24 @@
                     <input type="text" name="basicSearch" id="basicSearch" placeholder="Search KnowPros...">
                 </label>
 
-                <!--
+                {% if username is defined %}
                 <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
                 <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
                 <a href = "" class = "headerButton" style=margin-left:5px>Advanced Search</a>
-                -->
+                {% endif %}
             </form>
         </div>
 
         <div class="sideNav">
             <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
-            <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
-            <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
+            
+            {% if username %}
+            <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
+            <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
+            <a href="http://127.0.0.1:5000/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
+            <a href="http://127.0.0.1:5000/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
+            {% endif %}
+            
             <!--
             <a href="#About Us"><i class="ASr"></i> ?</a>
             <a href="#Contact"><i class="C"></i> ?</a>
