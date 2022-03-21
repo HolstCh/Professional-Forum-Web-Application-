@@ -1,4 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request, jsonify, flash
+
+import Search
 from App import app
 
 from Database import mysql
@@ -9,37 +11,42 @@ from ProfessionCategory import *
 from RegisteredCompany import *
 from UnregisteredCompany import *
 from Engineer import *
+from Search import *
 
 HOST = "http://127.0.0.1:5000/"
 
 
 @app.route('/')
 def home():  # put application's code here
-    return redirect(url_for('main'))
+    return redirect(url_for('unregisteredMain'))
 
 
-@app.route('/main', methods=["POST", "GET"])
-def main():
+@app.route('/unregisteredMain', methods=["POST", "GET"])
+def unregisteredMain():
     if request.method == "POST":
-        # "name" in HTML form not pulling data from search bar? testing with else branch for now
         searchBarInput = request.form["basicSearch"]
         myFilter = Filter(searchBarInput)
         match = myFilter.searchKeywords()
-        print(match)
         if match:
-            print("yay, match")
+            print(match)
         else:
             return render_template("mainPage.html")
     else:
-        searchBarInput = "test up to first 5 keywords here"
+        return render_template("mainPage.html")
+
+
+@app.route('/registeredMain', methods=["POST", "GET"])
+def registeredMain():
+    if request.method == "POST":
+        searchBarInput = request.form["basicSearch"]
         myFilter = Filter(searchBarInput)
         match = myFilter.searchKeywords()
-        print(match)
         if match:
-            print("yay, match")
-            return render_template("mainPage.html")
+            print(match)
         else:
-            return render_template("mainPage.html")
+            return render_template("userHome.html")
+    else:
+        return render_template("userHome.html")
 
 
 @app.route('/login', methods=["POST", "GET"])
@@ -50,7 +57,7 @@ def login():
         myLogin = Login(username, password)
         userExists = myLogin.authenticate()
         if userExists:
-            return redirect(url_for("main"))
+            return redirect(url_for("registeredMain"))
         else:
             return render_template('loginPage.html')
     else:
@@ -68,9 +75,19 @@ def signUp():
             return render_template('signUp.html', data=username)
         else:
             myLogin.add_login()
-            return redirect(url_for("main"))
+            return redirect(url_for("createProfile", username=username))
     else:
         return render_template('signUp.html')
+
+
+@app.route('/createProfile/<username>', methods=["POST", "GET"])
+def createProfile(username):
+    global data
+    if request.method == "POST":
+        createProfile(username)
+        return redirect(url_for('registeredMain'))
+    else:
+        return render_template('createProfile.html')
 
 
 if __name__ == '__main__':
