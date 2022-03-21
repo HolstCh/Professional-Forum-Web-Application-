@@ -5,8 +5,10 @@ class PostHistory:
     def questionHistory(username):
             cursor=mysql.connection.cursor()
             cursor.execute("SELECT * FROM Question_Post WHERE Username=%s", (username,))
+            results=cursor.fetchall()
+            cursor.close()
             
-            return cursor.fetchall()
+            return results
     # end of def
 
     def answerHistory(username):
@@ -19,9 +21,12 @@ class PostHistory:
                     =Answer_Post.QID WHERE Answer_Post.Username=%s""", (username,))
 
                 results2=cursor.fetchall()
+                cursor.close()
 
                 return zip(results1, results2)      # Bundle results from MySQL query
 
             else:
+                cursor.close()
+                
                 return None     # If first query was empty, return none
     # end of def
