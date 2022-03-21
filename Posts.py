@@ -11,6 +11,7 @@ class Posts:
         result1=cursor.fetchall()
         cursor.execute("SELECT Username, Timestamp, Body FROM Answer_Post WHERE QID=" + id)
         result2=cursor.fetchall()
+        cursor.close()
         
         return zip(result1, result2)      # Return list of result from MySQL queries
     # end of def
@@ -49,6 +50,7 @@ class Posts:
         mysql.connection.commit()
         cursor.execute("SELECT MAX(QuestionPostID) FROM Question_Post WHERE Username=%s", (username,))
         results=cursor.fetchone()
+        cursor.close()
         
         return str(results[0])      # Return ID of most recent question posted by user
     # end of def
