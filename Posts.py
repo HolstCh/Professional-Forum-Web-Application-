@@ -13,7 +13,6 @@ class Posts:
         result2=cursor.fetchall()
         
         return zip(result1, result2)      # Return list of result from MySQL queries
-        # end of if
     # end of def
 
     def postQuestion(self, username):
