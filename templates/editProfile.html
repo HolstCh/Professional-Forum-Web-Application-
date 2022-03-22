@@ -207,7 +207,7 @@
         </div>
 
         <div class="sideNav">
-            <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://127.0.0.1:5000/registeredMain"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
             <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
             <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
             <a href="http://127.0.0.1:5000/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
@@ -220,55 +220,55 @@
                     <p>
                         <label for="fName"> First Name: <span style="color:red">*</span> </label>
                         <br>
-                        <input type="text" name="fName" id="fName" required value={{item[0]}}>
+                        <input type="text" name="fName" id="fName" required value={{item[2]}}>
                     </p>
         
                     <p>
                         <label for="mName"> Middle Name(s): </label>
                         <br>
-                        <input type="text" name="mNames" id="mNames" value={{item[1]}}>
+                        <input type="text" name="mNames" id="mNames" value={{item[3]}}>
                     </p>
         
                     <p>
                         <label for="lName"> Last Name: <span style="color:red">*</span> </label>
                         <br>
-                        <input type="text" name="lName" id="lName" required value={{item[2]}}>
+                        <input type="text" name="lName" id="lName" required value={{item[4]}}>
                     </p>
         
                     <p>
                         <label for="email"> Email: <span style="color:red">*</span> </label>
                         <br>
-                        <input type="text" name="email" id="email" required value={{item[3]}}>
+                        <input type="text" name="email" id="email" required value={{item[5]}}>
                     </p>
         
                     <p>
                         <label for="curComp"> Current Company: </label>
                         <br>
-                        <input type="text" name="curComp" id="curComp" value={{item[4]}}>
+                        <input type="text" name="curComp" id="curComp" value={{item[6]}}>
                     </p>
         
                     <p>
                         <label for="prof"> Profession: <span style="color:red">*</span> </label>
                         <br>
-                        <input type="text" name="prof" id="prof" required value={{item[5]}}>
+                        <input type="text" name="prof" id="prof" required value={{item[7]}}>
                     </p>
         
                     <p>
                         <label for="skills"> Skills: </label>
                         <br>
-                        <textarea name="skills" id="skills" oninput="adjustArea(this)">{{item[6]}}</textarea>
+                        <textarea name="skills" id="skills" oninput="adjustArea(this)">{{item[8]}}</textarea>
                     </p>
         
                     <p>
                         <label for="desc"> Description of yourself: </label>
                         <br>
-                        <textarea name="desc" id="desc" oninput="adjustArea(this)">{{item[7]}}</textarea>
+                        <textarea name="desc" id="desc" oninput="adjustArea(this)">{{item[9]}}</textarea>
                     </p>
         
                     <p>
                         <label for="proj"> Past Projects: </label>
                         <br>
-                        <textarea name="proj" id="proj" oninput="adjustArea(this)">{{item[8]}}</textarea>
+                        <textarea name="proj" id="proj" oninput="adjustArea(this)">{{item[10]}}</textarea>
                     </p>
         
                     <br>
