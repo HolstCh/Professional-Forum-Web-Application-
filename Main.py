@@ -70,7 +70,8 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         myLogin = Login(username, password)
-        userExists = myLogin.authenticate()
+        #userExists = myLogin.authenticate()
+        userExists = myLogin.validate()
 
         if userExists:
             return redirect(url_for("registeredMain"))
@@ -87,7 +88,7 @@ if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         myLogin = Login(username, password)
-        userExists = myLogin.authenticate()
+        userExists = myLogin.user_exist()
 
         if userExists:
             return render_template('signUp.html', data=username)
