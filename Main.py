@@ -84,7 +84,7 @@ def login():
 
 @app.route('/signUp', methods=["POST", "GET"])
 def signUp():
-if request.method == "POST":
+    if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
         myLogin = Login(username, password)
