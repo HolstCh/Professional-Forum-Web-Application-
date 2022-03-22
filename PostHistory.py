@@ -1,5 +1,5 @@
 class PostHistory:
-    def questionHistory(username):
+    def questionHistory(self, username):
         from Database import mysql
         
         cursor=mysql.connection.cursor()
@@ -10,7 +10,7 @@ class PostHistory:
         return results
     # end of def
 
-    def answerHistory(username):
+    def answerHistory(self, username):
         from Database import mysql
         
         cursor=mysql.connection.cursor()

@@ -13,7 +13,7 @@ class Posts:
         result2=cursor.fetchall()
         cursor.close()
         
-        return zip(result1, result2)      # Return list of result from MySQL queries
+        return result1, result2      # Return list of result from MySQL queries
     # end of def
 
     def postQuestion(self, username):
@@ -57,3 +57,57 @@ class Posts:
         
         return str(results[0])      # Return ID of most recent question posted by user
     # end of def
+
+    def mostRecentQuestion(self):
+        from Database import mysql
+
+        cursor=mysql.connection.cursor()
+        cursor.execute("SELECT MAX(Timestamp) FROM Question_Post")
+        time=cursor.fetchall()
+        cursor.execute("SELECT * FROM Question_POST WHERE Timestamp=%s", (time,))
+        result=cursor.fetchall()
+
+        return result
+    # end of def
+
+    def mostRecentQuestionByUser(self, username):
+        from Database import mysql
+
+        cursor=mysql.connection.cursor()
+        cursor.execute("SELECT MAX(Timestamp) FROM Question_Post WHERE Username=%s", (username,))
+        time=cursor.fetchall()
+        cursor.execute("SELECT * FROM Question_POST WHERE Timestamp=%s", (time,))
+        result=cursor.fetchall()
+
+        return result
+    # end of def
+
+    def mostRecentAnswerByUser(self, username):
+        from Database import mysql
+
+        cursor=mysql.connection.cursor()
+        cursor.execute("SELECT MAX(Timestamp) FROM Answer_Post WHERE Username=%s", (username,))
+        time=cursor.fetchall()
+        cursor.execute("SELECT * FROM Answer_POST WHERE Timestamp=%s", (time,))
+        result=cursor.fetchall()
+
+        return result
+    # end of def
+    
+    def postAnswer(self, username, qid):
+        from App import request
+        from Database import mysql
+
+        answer=request.form.get("ans")
+        timestamp=datetime.now().replace(microsecond=0)
+        cursor=mysql.connection.cursor()
+        cursor.execute("SELECT Profession FROM Profiles WHERE Username=%s", (username,))
+        profession=cursor.fetchall()
+
+        cursor.execute("""INSERT INTO Answer_Post (QID, Username, Body, Timestamp, Profession)
+            VALUES (""" + qid + """, %s, %s, %s, %s)""", (username, answer, timestamp, profession))
+
+        mysql.connection.commit()
+    # end of def
+
+# end of class
