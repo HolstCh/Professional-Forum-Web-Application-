@@ -167,7 +167,7 @@
                 margin-bottom: 10px;
             }
 
-            .postBody
+            .tags
             {
                 margin-top: 5px;
                 font-size: 16px;
@@ -194,6 +194,11 @@
                 <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
                 <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
                 <!-- <a href = "" class = "headerButton" style=margin-left:5px>Advanced Search</a> -->
+
+                {% else %}
+                <a href = "http://127.0.0.1:5000/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
+                <a href="http://127.0.0.1:5000/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
+                
                 {% endif %}
             </form>
         </div>
@@ -221,13 +226,13 @@
 
             {% for item in data %}
                 <p><div>
-                    <a href="../posts/view/{{item[0]}}">{{item[2]}}</a>
+                    <a href="../post/view/{{item[0]}}">{{item[2]}}</a>
                     
                     <br>
                     
                     {{item[3]}}
 
-                    <div class="postBody">
+                    <div class="tags">
                         Profession: {{item[7]}} &nbsp; &nbsp; Tags: {{item[8]}}
                     </div>
                 </div></p>
