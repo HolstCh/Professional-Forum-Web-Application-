@@ -39,6 +39,14 @@ class Login:
             return 0 #username does not exist
         else:
             return -1 #password does not match
+        
+
+    # Check if username and password combination exists
+    def validate(self):
+        query="SELECT * FROM Users WHERE Username='" + self.username + "' AND Password='" + self.password + "'"
+        result=self.executeQuery(query)
+
+        return result
     
 
     #For debugging. Prints all users in the user Table

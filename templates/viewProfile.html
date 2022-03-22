@@ -220,7 +220,7 @@
         </div>
 
         <div class="sideNav">
-            <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://127.0.0.1:5000/registeredMain"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
             <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
             <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
             <a href="http://127.0.0.1:5000/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
@@ -234,15 +234,15 @@
 
         <div class ="mainContentContainer">
             {% for item in data %}
-                <h3>First name: <span class="item">{{item[0]}}</span> </h3>
-                <h3>Middle name(s): <span>{{item[1]}}</span> </h3>
-                <h3>Last name: <span>{{item[2]}}</span> </h3>
-                <h3>Email: <span>{{item[3]}}</span> </h3>
-                <h3>Profession: <span>{{item[5]}}</span> </h3>
-                <h3>Current Company: <span>{{item[4]}}</span> </h3>
-                <h3>Skills: <span>{{item[6]}}</span> </h3>
-                <h3>Personal Description: <span>{{item[7]}}</span> </h3>
-                <h3>Past Projects: <span>{{item[8]}}</span> </h3>
+                <h3>First name: <span class="item">{{item[2]}}</span> </h3>
+                <h3>Middle name(s): <span>{{item[3]}}</span> </h3>
+                <h3>Last name: <span>{{item[4]}}</span> </h3>
+                <h3>Email: <span>{{item[5]}}</span> </h3>
+                <h3>Profession: <span>{{item[6]}}</span> </h3>
+                <h3>Current Company: <span>{{item[7]}}</span> </h3>
+                <h3>Skills: <span>{{item[8]}}</span> </h3>
+                <h3>Personal Description: <span>{{item[9]}}</span> </h3>
+                <h3>Past Projects: <span>{{item[10]}}</span> </h3>
             {% endfor %}
             
             <br>

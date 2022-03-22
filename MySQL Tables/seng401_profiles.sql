@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.23, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: seng401
+-- Host: localhost    Database: seng401
 -- ------------------------------------------------------
--- Server version	8.0.23
+-- Server version	8.0.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,16 +23,21 @@ DROP TABLE IF EXISTS `profiles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `profiles` (
-  `firstName` text NOT NULL,
-  `middleNames` text,
-  `lastName` text NOT NULL,
-  `email` text NOT NULL,
-  `currentCompany` text,
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `firstName` varchar(255) NOT NULL,
+  `middleNames` varchar(255) DEFAULT NULL,
+  `lastName` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `currentCompany` varchar(255) DEFAULT NULL,
+  `skills` text,
+  `description` text,
+  `projects` text,
   `profession` text NOT NULL,
-  `skills` longtext,
-  `description` longtext,
-  `projects` longtext
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`ID`),
+  KEY `username` (`username`),
+  CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +46,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
+INSERT INTO `profiles` VALUES (1,'test1','fName',NULL,'lName','email@site.xyz',NULL,NULL,NULL,NULL,'some job'),(3,'dmah','Dylan','Connor','Mah','dylan.mah@ucalgary.ca',NULL,NULL,NULL,NULL,'Software Engineer');
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-16 16:43:13
+-- Dump completed on 2022-03-21 21:58:49

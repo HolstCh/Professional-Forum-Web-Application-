@@ -2,7 +2,7 @@ class Search:
     # Note: default constructor is used
 
     def getQuery(self):
-        from app import request
+        from App import request
         query=request.form.get("basicSearch")
         
         return query
