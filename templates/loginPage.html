@@ -21,30 +21,47 @@
         <div class="header h1">
             <br>
             
-            <p style="text-align:center"> <img src="/static/professional_logo.jpg" alt="logo" width="300" height="300"> </p>
-            <h1 style="text-align:center" font="Audiowide"> KnowPros </h1>
+            <p style="text-align: center"> <img src="/static/professional_logo.jpg" alt="logo" width="300" height="300"> </p>
+            <h1 font="Audiowide" style="text-align: center"> KnowPros </h1>
             
             <br>
 
             <form method="POST" autocomplete="off">
-                <p style="text-align:center">
+                <p style="text-align: center">
                     <label for="username" style="text-align:center"> Username: </label>
                     <input type="text" name="username" id="username">
                 </p>
     
-                <p style="text-align:center">
+                <p style="text-align: center">
                     <label for="password"> Password: </label>
                     <input type="password" name="password" id="password">
+                </p>
+
+                <p style="text-align: center">
+                    <input type="checkbox" onclick="toggleVisibility()"> Show Password
                 </p>
     
                 <br>
 
-                <p style="text-align:center"> <button type="submit" value="submit"> Submit </button> </p>
+                <p style="text-align: center"> <button type="submit" value="submit"> Submit </button> </p>
 
                 {% if msg %}
-                <p style="color: red">{{msg}}</p>
+                    <h2 style="color: red; text-align: center">{{msg}}</h2>
                 {% endif %}
             </form>
         </div>
+
+        <script>
+            function toggleVisibility() {
+                var element = document.getElementById("password");
+                
+                if (element.type === "password") {
+                    element.type="text";
+                } 
+                else {
+                    element.type="password";
+                }
+            }
+        </script>
     </body>
 </html>

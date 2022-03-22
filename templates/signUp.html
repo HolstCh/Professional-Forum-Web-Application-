@@ -29,7 +29,7 @@
             </p>
 
             {% if data %}
-                <p style="color:red"><strong> ERROR: Username already exists </strong></p>
+                <h3 style="color:red"> ERROR: Username already exists </h3>
             {% endif %}
 
             <p style = "text-align:center">
@@ -38,9 +38,24 @@
                 <input type="password" name="password" id="password" required>
             </p>
 
+            <input type="checkbox" onclick="toggleVisibility()"> Show Password
+
             <br>
 
             <p style = "text-align:center"> <button type="submit"> Submit </button> </p>
         </form>
+
+        <script>
+            function toggleVisibility() {
+                var element = document.getElementById("password");
+                
+                if (element.type === "password") {
+                    element.type="text";
+                } 
+                else {
+                    element.type="password";
+                }
+            }
+        </script>
     </body>
 </html>
