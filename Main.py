@@ -16,37 +16,52 @@ HOST = "http://127.0.0.1:5000/"
 
 
 @app.route('/')
-def home():  # put application's code here
+def home():
+    # Redirect to unregistered user
     return redirect(url_for('unregisteredMain'))
 
 
 @app.route('/unregisteredMain', methods=["POST", "GET"])
 def unregisteredMain():
+    username=None
+
     if request.method == "POST":
+        # If data is entered in search bar, get it and redirect to results page
         MySearch=Search()
         query=MySearch.getQuery()
         
-        return redirect("./query=" + query)
+        return redirect("../query=" + query)
 
     else:
-        return render_template("mainPage.html")
+        # If GET request is received, display the homepage
+        myPost=Posts()
+        data=myPost.mostRecentQuestion()
+
+        return render_template("mainPage.html", data=data)
 
 
-@app.route('/registeredMain', methods=["POST", "GET"])
+@app.route('/registeredMain/<username>', methods=["POST", "GET"])
 def registeredMain():
     if request.method == "POST":
+        # If data is entered into the search bar, get it and redirect to results page
         MySearch=Search()
         query=MySearch.getQuery()
         
-        return redirect("./query=" + query)
+        return redirect("../query=" + query)
 
     else:
-        return render_template("userHome.html", username=username)
+        # If GET request is received, display homepage
+        myPost=Posts()
+        question=myPost.mostRecentQuestionByUser(username)
+        answer=myPost.mostRecentAnswerByUser(username)
+
+        return render_template("userHome.html", username=username, question=question, answer=answer)
     
     
 @app.route("/query=<query>", methods=["GET", "POST"])
 def search(query):
     if request.method == "GET":
+        # If GET request is received, display query results
         MySearch=Search()
         results=MySearch.searchResults(query)
 
@@ -57,6 +72,7 @@ def search(query):
             return render_template("searchResults.html", username=username, msg="No results...")
     
     elif request.method == "POST":
+        # If data is entered into the search bar, get it and redirect to results page
         MySearch=Search()
         query=MySearch.getQuery()
 
@@ -71,10 +87,10 @@ def login():
         password = request.form["password"]
         myLogin = Login(username, password)
         #userExists = myLogin.authenticate()
-        userExists = myLogin.validate()
+        userExists=myLogin.validate()
 
         if userExists:
-            return redirect(url_for("registeredMain"))
+            return redirect("./registeredMain/" + username)
         else:
             return render_template('loginPage.html', msg="INVALID LOGIN")
 
@@ -88,7 +104,7 @@ def signUp():
         username = request.form["username"]
         password = request.form["password"]
         myLogin = Login(username, password)
-        userExists = myLogin.user_exist()
+        userExists=myLogin.user_exist()
 
         if userExists:
             return render_template('signUp.html', data=username)
@@ -103,11 +119,11 @@ def signUp():
 @app.route('/createProfile/<username>', methods=["POST", "GET"])
 def createProfile(username):
     global data
-    
+
     if request.method == "POST":
         myProfile=Profile()
         myProfile.createProfile(username)
-        
+
         return redirect(url_for('registeredMain'))
 
     else:
@@ -145,15 +161,13 @@ def editProfile(username):
     
 @app.route("/questions/<username>", methods=["GET"])
 def questionHistory(username):
-    from PostHistory import PostHistory
-
     myPostHistory=PostHistory()
-    data=myPostHistory.questionHistory()
+    data=myPostHistory.questionHistory(username)
 
     if data:
         return render_template("questionHistory.html", data=data, username=username)
     else:
-        return render_template("questionHistory.html", username=username, msg="No question history...")    
+        return render_template("questionHistory.html", username=username, msg="No question history...")
     
     
 @app.route("/answers/<username>", methods=["GET"])
@@ -167,6 +181,47 @@ def answerHistory(username):
         return render_template("answerHistory.html", data=data, username=username)
     else:
         return render_template("answerHistory.html", username=username, msg="No answer history...")
+    
+    
+@app.route("/answers/<username>", methods=["GET"])
+def answerHistory(username):
+    myPostHistory=PostHistory()
+    data=myPostHistory.answerHistory(username)
+
+    if data:
+        return render_template("answerHistory.html", data=data, username=username)
+    else:
+        return render_template("answerHistory.html", username=username, msg="No answer history...")
+    
+    
+@app.route("/post/question", methods=["GET", "POST"])
+def newQuestion():
+    if request.method == "GET":
+        return render_template("questionPost.html", username=username)
+
+    elif request.method == "POST":
+        myPost=Posts()
+        qid=myPost.postQuestion(username)
+
+        return redirect("./view/" + qid)
+    
+    
+@app.route("/post/view/<qid>", methods=["GET", "POST"])
+def viewPost(qid):
+    if request.method == "GET":
+        myPost=Posts()
+        question=myPost.viewPost(qid)[0]
+        answers=myPost.viewPost(qid)[1]
+
+        return render_template("viewPost.html", question=question, answers=answers, username=username)
+    
+    elif request.method == "POST":
+        myPost=Posts()
+        myPost.postAnswer(username, qid)
+        question=myPost.viewPost(qid)[0]
+        answers=myPost.viewPost(qid)[1]
+
+        return render_template("viewPost.html", question=question, answers=answers, username=username)
     
 # --------------------------------------------------------------------------------------------------------------- #    
     
