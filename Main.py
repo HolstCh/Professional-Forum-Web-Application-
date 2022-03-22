@@ -24,11 +24,17 @@ def home():  # put application's code here
 @app.route('/unregisteredMain', methods=["POST", "GET"])
 def unregisteredMain():
     if request.method == "POST":
-        searchBarInput = request.form["basicSearch"]
-        myFilter = Filter(searchBarInput)
-        match = myFilter.searchKeywords()
-        if match:
-            print(match)
+        search = Search()
+        searchValue = search.getQuery()
+        listOfTuples = search.searchResults(searchValue)
+        print(listOfTuples)
+        if searchValue:
+            print(searchValue)
+            filter = Filter()
+            profession = request.form["inputProfession"]
+            updatedListOfTuples = filter.professionType(listOfTuples, profession)
+            print(updatedListOfTuples)
+            return render_template("mainPage.html")
         else:
             return render_template("mainPage.html")
     else:
@@ -38,11 +44,17 @@ def unregisteredMain():
 @app.route('/registeredMain', methods=["POST", "GET"])
 def registeredMain():
     if request.method == "POST":
-        searchBarInput = request.form["basicSearch"]
-        myFilter = Filter(searchBarInput)
-        match = myFilter.searchKeywords()
-        if match:
-            print(match)
+        search = Search()
+        searchValue = search.getQuery()
+        listOfTuples = search.searchResults(searchValue)
+        print(listOfTuples)
+        if searchValue:
+            print(searchValue)
+            filter = Filter()
+            profession = request.form["inputProfession"]
+            updatedListOfTuples = filter.professionType(listOfTuples, profession)
+            print(updatedListOfTuples)
+            return render_template("mainPage.html")
         else:
             return render_template("userHome.html")
     else:
@@ -84,7 +96,8 @@ def signUp():
 def createProfile(username):
     global data
     if request.method == "POST":
-        createProfile(username)
+        myProfile = Profile()
+        myProfile.createProfile(username)
         return redirect(url_for('registeredMain'))
     else:
         return render_template('createProfile.html')
