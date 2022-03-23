@@ -23,6 +23,7 @@ class Login:
         cursor = connection.cursor()
         cursor.execute(query)
         result = cursor.fetchall()
+        connection.commit()
         return result
 
 
