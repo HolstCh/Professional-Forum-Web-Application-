@@ -85,7 +85,7 @@ def search(query):
     
 @app.route("/addCompany/<username>", methods=["GET", "POST"])
 def addCompany(username):
-    request.method == "POST":
+    if request.method == "POST":
         profile = Profile()
         companyName = request.form.get("company", None)
         position = request.form.get("position", None)
