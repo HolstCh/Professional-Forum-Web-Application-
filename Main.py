@@ -82,6 +82,21 @@ def search(query):
         return redirect("http://127.0.0.1:5000/query=" + query)
 
 
+    
+@app.route("/addCompany/<username>", methods=["GET", "POST"])
+def addCompany(username):
+    request.method == "POST":
+        profile = Profile()
+        companyName = request.form.get("company", None)
+        position = request.form.get("position", None)
+        start = request.form.get("start", None)
+        end = request.form.get("end", None)
+        profile.addCompany(username, companyName, position, start, end)
+        message = "Company added successfully"
+        flash(message)
+        return render_template("addCompany.html", username = username)
+    
+    
 @app.route('/login', methods=["POST", "GET"])
 def login():
     if request.method == "POST":
