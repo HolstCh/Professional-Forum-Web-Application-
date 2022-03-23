@@ -58,3 +58,12 @@ class Profile:
 
         cursor.close()
     # end of def
+    
+    def addCompany(self, name, position, start, end):
+        from Database import mysql
+        cursor = mysql.connection.cursor()
+        userQuery = "INSERT INTO USERS VALUES ('" + name + "','" + position+ "'," start+ "," end");"
+        cursor.execute(userQuery)
+        mysql.connection.commit()
+        curosr.close()
+    #end of def
