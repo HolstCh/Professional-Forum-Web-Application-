@@ -62,4 +62,4 @@ def test_validate(session):
     expected = myLogin.validate()
     actual = [("chad", "holst"), ]
     print(expected, actual)
-    assert all([a == b for a, b in zip(actual, expected)])
+    assert expected == actual
