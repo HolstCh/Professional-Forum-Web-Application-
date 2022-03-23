@@ -33,7 +33,7 @@ def unregisteredMain():
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("./query=" + query)
 
     else:
         myPost = Posts()
@@ -51,7 +51,7 @@ def registeredMain(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../query=" + query)
 
     else:
         myPost = Posts()
@@ -79,13 +79,13 @@ def search(query):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../query=" + query)
 
 
     
 @app.route("/addCompany/<username>", methods=["GET", "POST"])
 def addCompany(username):
-    if request.method == "POST":
+    if request.method == "POST" and result.form.get("basicSearch") == None:
         profile = Profile()
         companyName = request.form.get("company", None)
         position = request.form.get("position", None)
@@ -95,6 +95,15 @@ def addCompany(username):
         message = "Company added successfully"
         flash(message)
         return render_template("addCompany.html", username = username)
+    
+    elif request.method == "GET":
+        return render_template("addCompany.html", username = username)
+    
+    elif request.method == "POST" and result.form.get("basicSearch") != None:
+        MySearch = Search()
+        query = MySearch.getQuery()
+
+        return redirect("../../query=" + query)
     
     
 @app.route('/login', methods=["POST", "GET"])
@@ -160,7 +169,7 @@ def viewProfile(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../../../query=" + query)
 
     # Add post later (will be for "add past company")
 
@@ -183,7 +192,7 @@ def editProfile(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../../../query=" + query)
 
 
 @app.route("/questions/<username>", methods=["GET", "POST"])
@@ -201,7 +210,7 @@ def questionHistory(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../../query=" + query)
 
 
 @app.route("/answers/<username>", methods=["GET", "POST"])
@@ -219,7 +228,7 @@ def answerHistory(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../../query=" + query)
 
 
 @app.route("/post/question", methods=["GET", "POST"])
@@ -237,7 +246,7 @@ def newQuestion():
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../../query=" + query)
 
 
 @app.route("/post/view/<qid>", methods=["GET", "POST"])
@@ -261,7 +270,7 @@ def viewPost(qid):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("../../../query=" + query)
 
 
 # --------------------------------------------------------------------------------------------------------------------- #
