@@ -162,7 +162,7 @@
                 height: auto;
                 width: auto;
                 margin-left: 175px;
-                
+
                 margin-right: 10px;
                 margin-bottom: 10px;
             }
@@ -191,7 +191,7 @@
 
         <title></title>
     </head>
-        
+
     <body>
         <div class = "header h1 fixed" id="main_header" style="background-color: #ffffff">
             <div class = "logo">
@@ -205,8 +205,8 @@
                     <input type="text" name="basicSearch" id ="basicSearch" placeholder="Search KnowPros...">
                 </label>
 
-                <a href = "http://127.0.0.1:5000/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
-                <a href="http://127.0.0.1:5000/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
+                <a href = "http://knowpros.pythonanywhere.com/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
+                <a href="http://knowpros.pythonanywhere.com/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
 
                 <!--
                 <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
@@ -217,12 +217,12 @@
         </div>
 
         <div class="sideNav">
-            <a href="http://127.0.0.1:5000/registeredMain/{{username}}"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
-            <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
-            <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
-            <a href="http://127.0.0.1:5000/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
-            <a href="http://127.0.0.1:5000/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
-        
+            <a href="http://knowpros.pythonanywhere.com/registeredMain/{{username}}"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://knowpros.pythonanywhere.com/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
+            <a href="http://knowpros.pythonanywhere.com/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
+            <a href="http://knowpros.pythonanywhere.com/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
+            <a href="http://knowpros.pythonanywhere.com/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
+
             <!--
             <a href="#About Us"><i class="ASr"></i> ?</a>
             <a href="#Contact"><i class="C"></i> ?</a>
@@ -236,7 +236,7 @@
                     <br>
                     <textarea name="title" id="title" oninput="adjustArea(this)" autocomplete="off" required></textarea>
                 </p>
-    
+
                 <p>
                     <b> TAGS </b>
                     <br>
@@ -250,7 +250,7 @@
                         <option value="Mechanical"> Mechanical </option>
                         <option value="Software"> Software </option>
                     </select>
-    
+
                     <div id="civil_options" style="display:none">
                         <input type="checkbox" name="civilCB" value="Construction Management"> Construction Management
                         <br>
@@ -270,7 +270,7 @@
                         <br>
                         <input type="checkbox" name="civilCB" value="Structural Optimization"> Structural Optimization
                     </div>
-    
+
                     <div id="chemical_options" style="display:none">
                         <input type="checkbox" name="chemCB" value="Mass Balance"> Mass Balance
                         <br>
@@ -290,7 +290,7 @@
                         <br>
                         <input type="checkbox" name="chemCB" value="Reactors"> Reactors
                     </div>
-    
+
                     <div id="electrical_options" style="display:none">
                         <input type="checkbox" name="elecCB" value="Circuits"> Circuits
                         <br>
@@ -310,7 +310,7 @@
                         <br>
                         <input type="checkbox" name="elecCB" value="Optics and Photonics"> Optics and Photonics
                     </div>
-    
+
                     <div id="geomatics_options" style="display:none">
                         <input type="checkbox" name="geoCB" value="Surveying"> Surveying
                         <br>
@@ -328,7 +328,7 @@
                         <br>
                         <input type="checkbox" name="geoCB" value="Coastal Zone Management and Mapping"> Coastal Zone Management and Mapping
                     </div>
-    
+
                     <div id="mechanical_options" style="display:none">
                         <input type="checkbox" name="mechCB" value="Fluid Mechanics"> Fluid Mechanics
                         <br>
@@ -348,7 +348,7 @@
                         <br>
                         <input type="checkbox" name="mechCB" value="Acoustics"> Acoustics
                     </div>
-    
+
                     <div id="software_options" style="display:none">
                         <input type="checkbox" name="softCB" value="Algorithms"> Algorithms
                         <br>
@@ -369,17 +369,17 @@
                         <input type="checkbox" name="softCB" value="JavaScript"> JavaScript
                     </div>
                 </p>
-    
+
                 <br>
-    
+
                 <p>
                     <label for="ques"><b> BODY </b></label>
                     <br>
                     <textarea name="ques" id="ques" autocomplete="off" oninput="adjustArea(this)" required></textarea>
                 </p>
-    
+
                 <br>
-    
+
                 <button type="submit"> Submit </button>
             </form>
         </div>
@@ -462,4 +462,6 @@
         </script>
     </body>
 </html>
+
+
 
