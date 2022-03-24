@@ -64,7 +64,7 @@ class Posts:
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT MAX(Timestamp) FROM Question_Post")
         time=cursor.fetchall()
-        cursor.execute("SELECT * FROM Question_POST WHERE Timestamp=%s", (time,))
+        cursor.execute("SELECT * FROM Question_Post WHERE Timestamp=%s", (time,))
         result=cursor.fetchall()
 
         return result
@@ -76,7 +76,7 @@ class Posts:
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT MAX(Timestamp) FROM Question_Post WHERE Username=%s", (username,))
         time=cursor.fetchall()
-        cursor.execute("SELECT * FROM Question_POST WHERE Timestamp=%s", (time,))
+        cursor.execute("SELECT * FROM Question_Post WHERE Timestamp=%s", (time,))
         result=cursor.fetchall()
 
         return result
@@ -88,7 +88,7 @@ class Posts:
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT MAX(Timestamp) FROM Answer_Post WHERE Username=%s", (username,))
         time=cursor.fetchall()
-        cursor.execute("SELECT * FROM Answer_POST WHERE Timestamp=%s", (time,))
+        cursor.execute("SELECT * FROM Answer_Post WHERE Timestamp=%s", (time,))
         result=cursor.fetchall()
 
         return result
