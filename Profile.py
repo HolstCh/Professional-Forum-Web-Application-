@@ -15,8 +15,8 @@ class Profile:
         pastProj=request.form.get("proj", None)
         
         cursor=mysql.connection.cursor()
-        cursor.execute("""INSERT INTO Profiles (username, firstName, middleNames, lastName, email, currentCompany,
-            profession, skills, description, projects) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (username,
+        cursor.execute("""INSERT INTO Profiles (Username, FirstName, MiddleNames, LastName, Email, CurrentCompany,
+            Profession, Skills, Description, Projects) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""", (username,
             fName, mNames, lName, email, curComp, prof, skills, desc, pastProj))
 
         mysql.connection.commit()
@@ -50,8 +50,8 @@ class Profile:
         pastProj=request.form.get("proj", None)
 
         cursor=mysql.connection.cursor()
-        cursor.execute("""UPDATE Profiles SET firstName=%s, middleNames=%s, lastName=%s, email=%s, currentCompany=%s,
-            profession=%s, skills=%s, description=%s, projects=%s WHERE Username=%s""", (fName, mNames, lName, email, 
+        cursor.execute("""UPDATE Profiles SET FirstName=%s, MiddleNames=%s, LastName=%s, Email=%s, CurrentCompany=%s,
+            Profession=%s, Skills=%s, Description=%s, Projects=%s WHERE Username=%s""", (fName, mNames, lName, email, 
             curComp, prof, skills, desc, pastProj, username))
         
         mysql.connection.commit()
@@ -69,7 +69,7 @@ class Profile:
         end = request.form.get("end", None)
 
         cursor = mysql.connection.cursor()
-        cursor.execute("""INSERT INTO past_companies (username, companyName, start, end, position) VALUES (%s, %s, %s, %s, %s)""",
+        cursor.execute("""INSERT INTO past_companies (Username, CompanyName, Start, End, Position) VALUES (%s, %s, %s, %s, %s)""",
             (username, name, start, end, position))
         #cursor.execute(userQuery)
         cursor.close()
