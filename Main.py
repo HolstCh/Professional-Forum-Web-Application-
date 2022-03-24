@@ -93,12 +93,12 @@ def addCompany(username):
         return render_template("addCompany.html", username = username)
 
 
-        return render_template("addCompany.html", username=username)
+#         return render_template("addCompany.html", username=username)
 
     elif request.method == "GET":
         return render_template("addCompany.html", username = username)
 
-        return render_template("addCompany.html", username=username)
+#         return render_template("addCompany.html", username=username)
 
     elif request.method == "POST" and request.form.get("basicSearch") != None:
         MySearch = Search()
