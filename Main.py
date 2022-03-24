@@ -85,21 +85,17 @@ def search(query):
     
 @app.route("/addCompany/<username>", methods=["GET", "POST"])
 def addCompany(username):
-    if request.method == "POST" and result.form.get("basicSearch") == None:
+if request.method == "POST" and request.form.get("basicSearch") == None:
         profile = Profile()
-        companyName = request.form.get("company", None)
-        position = request.form.get("position", None)
-        start = request.form.get("start", None)
-        end = request.form.get("end", None)
-        profile.addCompany(username, companyName, position, start, end)
-        message = "Company added successfully"
-        flash(message)
+        profile.addCompany(username)
+        flash("Company added successfully")
+        
         return render_template("addCompany.html", username = username)
     
     elif request.method == "GET":
         return render_template("addCompany.html", username = username)
     
-    elif request.method == "POST" and result.form.get("basicSearch") != None:
+    elif request.method == "POST" and request.form.get("basicSearch") != None:
         MySearch = Search()
         query = MySearch.getQuery()
 
