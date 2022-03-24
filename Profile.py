@@ -58,12 +58,28 @@ class Profile:
 
         cursor.close()
     # end of def
-    
-    def addCompany(self, username, name, position, start, end):
+
+    def addCompany(self, username):
         from Database import mysql
+        from App import request
+
+        name = request.form.get("company", None)
+        position = request.form.get("position", None)
+        start = request.form.get("start", None)
+        end = request.form.get("end", None)
+
         cursor = mysql.connection.cursor()
-        cursor.execute("""INSERT INTO past_companies (username, companyName, start, end, position) VALUES (%s, %s, %s, %s, %s)""", (
-            username, name, start, end, position))
-        cursor.execute(userQuery)
+        cursor.execute("""INSERT INTO past_companies (username, companyName, start, end, position) VALUES (%s, %s, %s, %s, %s)""",
+            (username, name, start, end, position))
+        #cursor.execute(userQuery)
         cursor.close()
-    #end of def
+
+    def getPastCompanies(self, username):
+        from Database import mysql
+
+        cursor=mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Past_Companies WHERE Username=%s", (username,))
+        result=cursor.fetchall()
+        cursor.close()
+
+        return result
