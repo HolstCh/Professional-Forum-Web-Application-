@@ -24,7 +24,7 @@ class Profile:
     #end of def
 
     # Display profile in HTML
-    def getData(self, username):
+    def getProfile(self, username):
         from Database import mysql
         
         cursor=mysql.connection.cursor()
