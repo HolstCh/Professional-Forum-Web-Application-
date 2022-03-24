@@ -16,6 +16,7 @@ import pytest
 import sqlite3
 from unittest.mock import MagicMock
 
+
 # fixture for running Flask
 @pytest.fixture()
 def appTest():
@@ -56,10 +57,22 @@ def setupDB(session):
     session.connection.commit()
 
 
+# Login class tests:
 @pytest.mark.usefixtures("setupDB")
 def test_validate(session):
     myLogin = Login("chad", "holst", session)
     expected = myLogin.validate()
     actual = [("chad", "holst"), ]
     print(expected, actual)
-    assert expected == actual
+    assert expected == actual, "input should be valid and produce list of tuples"
+
+
+# Filter class test:
+def test_professionType():
+    myFilter = Filter()
+    professionFilter = "Engineer"
+    myListOfTuples = [("I", "Should", "Be", "Removed", "Since", "Index", "7 is", "Not Engineer"),
+                      ("I", "Should", "Be", "Stay", "Since", "Index", "7 is", "Engineer")]
+    expected = [("I", "Should", "Be", "Stay", "Since", "Index", "7 is", "Engineer"), ]
+    actual = myFilter.professionType(myListOfTuples, professionFilter)
+    assert expected == actual, "tuple should be removed if profession column from QUESTION_POSTS is different than professionFilter"
