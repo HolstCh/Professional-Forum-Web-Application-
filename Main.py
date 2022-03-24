@@ -162,7 +162,7 @@ def createProfile(username):
 def viewProfile(username):
     if request.method == "GET":
         myProfile = Profile()
-        data = myProfile.getData(username)
+        data = myProfile.getProfile(username)
 
         return render_template("viewProfile.html", data=data, username=username)
 
