@@ -26,7 +26,7 @@ class Profile:
     # Display profile in HTML
     def getProfile(self, username):
         from Database import mysql
-        
+         
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT * FROM Profiles WHERE Username=%s", (username,))
         result=cursor.fetchall()
