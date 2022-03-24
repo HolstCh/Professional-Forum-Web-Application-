@@ -3,7 +3,7 @@
 #Version: 1.1
 
 from App import app
-from Database import mysql
+
 #import mysql.connector
 debug = True
 
@@ -18,19 +18,20 @@ class Login:
     #function to execute an SQL Query
     #Returns the Query result
     def executeQuery(self,query):
-        connection = mysql.connector.connect(host = "localhost", database = 'newdb', user = "root",passwd = "replace with your own password") #make sure to change password to correct one
+        from Database import mysql
+#         connection = mysql.connector.connect(host = "localhost", database = 'newdb', user = "root",passwd = "replace with your own password") #make sure to change password to correct one
 
-        cursor = connection.cursor()
+        cursor = mysql.connection.cursor()
         cursor.execute(query)
         result = cursor.fetchall()
-        connection.commit()
+        mysql.connection.commit()
         return result
 
 
     #Cross checks if a username and password correspond with eachother
     #return boolean result
     def authenticate(self):
-        userQuery = "SELECT password FROM USERS WHERE username = '" + self.username + "';"
+        userQuery = "SELECT Password FROM Users WHERE Username = '" + self.username + "';"
         result = self.executeQuery(userQuery)
         convert = str(result)
         convert = convert[3:len(convert) - 4] #remove useless characters from front and end
@@ -52,7 +53,7 @@ class Login:
 
     #For debugging. Prints all users in the user Table
     def printUsers(self):
-        userQuery = "SELECT username, password FROM USERS;"
+        userQuery = "SELECT Username, Password FROM Users;"
         table_result = self.executeQuery(userQuery)
         for x in table_result:
             print(x)
@@ -60,7 +61,7 @@ class Login:
 
     #check if user is already in the database table
     def user_exist(self):
-        userQuery = "SELECT 1 FROM users WHERE username = '"+ self.username +"';"
+        userQuery = "SELECT 1 FROM Users WHERE Username = '"+ self.username +"';"
         result = self.executeQuery(userQuery)
         if(len(result) == 0):
             return False
@@ -72,7 +73,7 @@ class Login:
     #Returns false if request was not possible (usename already exists)
     def add_login(self):
         if(self.user_exist() == False):
-            userQuery = "INSERT INTO USERS VALUES ('" + self.username + "','" + self.password+ "');"
+            userQuery = "INSERT INTO Users VALUES ('" + self.username + "','" + self.password+ "');"
             self.executeQuery(userQuery)
             print("added new user") #for debugging
             return True
@@ -83,7 +84,7 @@ class Login:
 
     #Sets the password. Can be used if a user wants to change their password
     def set_password(self,password):
-        userQuery = "UPDATE users SET password = '"+password + "' WHERE username = '"+self.username +"';"
+        userQuery = "UPDATE Users SET Password = '"+password + "' WHERE Username = '"+self.username +"';"
         self.executeQuery(userQuery)
 
     
