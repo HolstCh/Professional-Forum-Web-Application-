@@ -82,26 +82,25 @@ def search(query):
         return redirect("../query=" + query)
 
 
-    
 @app.route("/addCompany/<username>", methods=["GET", "POST"])
 def addCompany(username):
-if request.method == "POST" and request.form.get("basicSearch") == None:
+    if request.method == "POST" and request.form.get("basicSearch") == None:
         profile = Profile()
         profile.addCompany(username)
         flash("Company added successfully")
-        
-        return render_template("addCompany.html", username = username)
-    
+
+        return render_template("addCompany.html", username=username)
+
     elif request.method == "GET":
-        return render_template("addCompany.html", username = username)
-    
+        return render_template("addCompany.html", username=username)
+
     elif request.method == "POST" and request.form.get("basicSearch") != None:
         MySearch = Search()
         query = MySearch.getQuery()
 
         return redirect("../../query=" + query)
-    
-    
+
+
 @app.route('/login', methods=["POST", "GET"])
 def login():
     if request.method == "POST":
