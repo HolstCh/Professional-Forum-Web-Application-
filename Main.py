@@ -13,7 +13,7 @@ from Search import *
 from Posts import *
 from PostHistory import *
 
-HOST = "http://127.0.0.1:5000/"
+HOST = "http://knowpros.pythonanywhere.com"
 username = None
 professionFilter = None
 
@@ -33,7 +33,7 @@ def unregisteredMain():
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("./query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
     else:
         myPost = Posts()
@@ -51,7 +51,7 @@ def registeredMain(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
     else:
         myPost = Posts()
@@ -79,7 +79,8 @@ def search(query):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
+
 
 
 @app.route("/addCompany/<username>", methods=["GET", "POST"])
@@ -89,9 +90,14 @@ def addCompany(username):
         profile.addCompany(username)
         flash("Company added successfully")
 
+        return render_template("addCompany.html", username = username)
+
+
         return render_template("addCompany.html", username=username)
 
     elif request.method == "GET":
+        return render_template("addCompany.html", username = username)
+
         return render_template("addCompany.html", username=username)
 
     elif request.method == "POST" and request.form.get("basicSearch") != None:
@@ -140,7 +146,7 @@ def signUp():
 
 @app.route('/createProfile/<username>', methods=["POST", "GET"])
 def createProfile(username):
-    global data
+   # global data
 
     if request.method == "POST":
         myProfile = Profile()
@@ -164,7 +170,7 @@ def viewProfile(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../../../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
     # Add post later (will be for "add past company")
 
@@ -181,13 +187,13 @@ def editProfile(username):
         myProfile = Profile()
         myProfile.pushEdits(username)
 
-        return redirect("../view/" + username)
+        return redirect("/view/" + username)
 
     elif request.method == "POST" and request.form.get("basicSearch") != None:
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../../../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/questions/<username>", methods=["GET", "POST"])
@@ -205,7 +211,7 @@ def questionHistory(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/answers/<username>", methods=["GET", "POST"])
@@ -223,7 +229,7 @@ def answerHistory(username):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/post/question", methods=["GET", "POST"])
@@ -241,7 +247,7 @@ def newQuestion():
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/post/view/<qid>", methods=["GET", "POST"])
@@ -265,10 +271,11 @@ def viewPost(qid):
         MySearch = Search()
         query = MySearch.getQuery()
 
-        return redirect("../../../query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 # --------------------------------------------------------------------------------------------------------------------- #
 
 if __name__ == '__main__':
     app.run(debug=True)
+
