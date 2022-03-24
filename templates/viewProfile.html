@@ -193,6 +193,14 @@
                 font-size: 16;
                 font-weight: bold;
             }
+
+            .company
+            {
+                border: 1px solid black;
+                padding: 15px;
+                margin-left: 20px;
+                margin-right: 20px;
+            }
         </style>
 
         <title></title>
@@ -236,7 +244,7 @@
         </div>
 
         <div class ="mainContentContainer">
-            {% for item in data %}
+            {% for item in profile %}
                 <h3>First name: <span class="item">{{item[2]}}</span> </h3>
                 <h3>Middle name(s): <span>{{item[3]}}</span> </h3>
                 <h3>Last name: <span>{{item[4]}}</span> </h3>
@@ -250,10 +258,26 @@
             
             <br>
 
-            <h3>Past Work Experience</h3>
-            <p><i>[!!] WORK IN PROGRESS [!!]</i></p>
-            
-            <button type="button"> ADD PAST COMPANY </button>
+            <h2 style="text-align: center">Past Work Experience</h2>
+            {% for item in companies %}
+                <div class="company">
+                        <b>Company: </b><span>{{item[1]}}</span>
+                        <br>
+                        <b>Position: </b><span>{{item[4]}}</span>
+                        <br>
+                        <b>Start date: </b><span>{{item[2]}}</span>
+                        <br>
+                        <b>End date: </b><span>{{item[3]}}</span>
+                </div>
+
+                <br>
+            {% endfor %}
+
+            <form method="post">
+                <p>
+                    <button type="submit"> ADD PAST COMPANY </button>
+                </p>
+            </form>
         </div>
     </body>
 </html>
