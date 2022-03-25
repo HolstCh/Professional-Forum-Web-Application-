@@ -13,6 +13,7 @@ from Posts import *
 from PostHistory import *
 from Database import *
 import pytest
+import pytest_cov
 import sqlite3
 from unittest.mock import MagicMock
 
@@ -58,13 +59,13 @@ def setupDB(session):
 
 
 # Login class tests:
-@pytest.mark.usefixtures("setupDB")
-def test_validate(session):
-    myLogin = Login("chad", "holst", session)
-    expected = myLogin.validate()
-    actual = [("chad", "holst"), ]
-    print(expected, actual)
-    assert expected == actual, "input should be valid and produce list of tuples"
+# @pytest.mark.usefixtures("setupDB")
+# def test_validate(session):
+#     myLogin = Login("chad", "holst", session)
+#     expected = myLogin.validate()
+#     actual = [("chad", "holst"), ]
+#     print(expected, actual)
+#     assert expected == actual, "input should be valid and produce list of tuples"
 
 
 # Filter class test:
@@ -76,3 +77,23 @@ def test_professionType():
     expected = [("I", "Should", "Be", "Stay", "Since", "Index", "7 is", "Engineer"), ]
     actual = myFilter.professionType(myListOfTuples, professionFilter)
     assert expected == actual, "tuple should be removed if profession column from QUESTION_POSTS is different than professionFilter"
+
+# def test_new_account_add_company():
+#     newAccount = Profile()
+#     username = "NewUser"
+#     expected = "NewUser"
+#     newAccount.createProfile(username)
+#     actual2 = newAccount.getProfile(username)
+
+# Engineer class test
+def test_engineer_degree():
+    newEngineer = Engineer("Software engineering", "Canada", "80", "21")
+    actual = newEngineer.degree
+    expected = "Software engineering"
+    assert expected == actual
+
+# Post test
+def test_posting():
+    newPost = Posts("chad")    
+    newPost.
+
