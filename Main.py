@@ -161,18 +161,20 @@ def createProfile(username):
 @app.route("/profile/view/<username>", methods=["GET", "POST"])
 def viewProfile(username):
     if request.method == "GET":
-        myProfile = Profile()
-        data = myProfile.getProfile(username)
+        myProfile=Profile()
+        profile=myProfile.getData(username)
+        companies=myProfile.getPastCompanies(username)
 
-        return render_template("viewProfile.html", data=data, username=username)
+        return render_template("viewProfile.html", profile=profile, companies=companies, username=username)
+    
+    elif request.method == "POST" and request.form.get("basicSearch") != None:
+        MySearch=Search()
+        query=MySearch.getQuery()
 
-    elif request.method == "POST":
-        MySearch = Search()
-        query = MySearch.getQuery()
+        return redirect("../../../query=" + query)
 
-        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
-
-    # Add post later (will be for "add past company")
+    elif request.method == "POST" and request.form.get("basicSearch") == None:
+        return redirect("../../../addCompany/" + username)
 
 
 @app.route("/profile/edit/<username>", methods=["GET", "POST"])
