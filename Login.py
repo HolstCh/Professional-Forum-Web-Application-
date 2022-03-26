@@ -9,10 +9,18 @@ debug = True
 
 class Login:
     #Ctor for Login
-    def __init__(self, username, password):
+    def __init__(self, username, password, connection):
         self.username = username
         self.password = password
-       # self.connection = connection
+        self.connection = connection
+        
+    # Check if username and password combination exists
+    def validate(self):
+        query = "SELECT * FROM Users WHERE Username='" + self.username + "' AND Password='" + self.password + "'"
+        cursor = self.connection
+        cursor.execute(query)
+        result = cursor.fetchall()
+        return result   
         
 
     #function to execute an SQL Query
@@ -42,14 +50,6 @@ class Login:
         else:
             return -1 #password does not match
         
-
-    # Check if username and password combination exists
-    def validate(self):
-        query="SELECT * FROM Users WHERE Username='" + self.username + "' AND Password='" + self.password + "'"
-        result=self.executeQuery(query)
-
-        return result
-    
 
     #For debugging. Prints all users in the user Table
     def printUsers(self):
