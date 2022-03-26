@@ -167,7 +167,7 @@
                 margin-bottom: 10px;
             }
 
-            .tags
+            .extras
             {
                 margin-top: 5px;
                 font-size: 16px;
@@ -231,14 +231,19 @@
 
             {% for item in data %}
                 <p><div>
+                    <!-- Question title as hyperlink -->
                     <a href="../post/view/{{item[0]}}">{{item[2]}}</a>
 
                     <br>
 
-                    {{item[3]}}
+                    {{item[3]}}     <!-- Question body -->
 
-                    <div class="tags">
-                        Profession: {{item[7]}} &nbsp; &nbsp; Tags: {{item[8]}}
+                    <div class="extras">
+                        Profession: {{item[7]}}
+                        <br>
+                        Profession Category: {{item[8]}}
+                        <br>
+                        Tags: {{item[9]}}
                     </div>
                 </div></p>
 
@@ -271,6 +276,4 @@
         </script>
     </body>
 </html>
-
-
 
