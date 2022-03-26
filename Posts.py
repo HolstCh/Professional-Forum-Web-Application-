@@ -16,13 +16,10 @@ class Posts:
         return result1, result2      # Return list of result from MySQL queries
     # end of def
 
-    def postQuestion(self, username):
+    def postQuestion(self, username, title, body, profType):
         from App import request
         from Database import mysql
 
-        title=request.form.get("title", None)
-        body=request.form.get("ques", None)
-        professionType=request.form.get("prof", None)
         timestamp=datetime.now().replace(microsecond=0)
 
         global select   # Make variable accessible to if/else/elif blocks
@@ -94,11 +91,10 @@ class Posts:
         return result
     # end of def
 
-    def postAnswer(self, username, qid):
+    def postAnswer(self, username, qid, answer):
         from App import request
         from Database import mysql
 
-        answer=request.form.get("ans")
         timestamp=datetime.now().replace(microsecond=0)
         cursor=mysql.connection.cursor()
         cursor.execute("SELECT Profession FROM Profiles WHERE Username=%s", (username,))
