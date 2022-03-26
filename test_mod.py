@@ -141,3 +141,8 @@ class routeTests(unittest.TestCase):
         response=self.tester.get("/addCompany/test1")
 
         assert response.status_code == 200, "Page should exist and load without errors"
+
+    def test_fakePage(self):
+        response=self.tester.get("/somepageurl")
+
+        assert response.status_code == 404, "Page should not exist"
