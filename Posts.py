@@ -25,27 +25,27 @@ class Posts:
         global select   # Make variable accessible to if/else/elif blocks
 
         # Check which dropdown menu option was selected and get all checkboxes under that category
-        if professionType == "Civil":
+        if profType == "Civil":
             select=request.form.getlist("civilCB", None)
 
-        elif professionType == "Chemical":
+        elif profType == "Chemical":
             select=request.form.getlist("chemCB", None)
 
-        elif professionType == "Electrical":
+        elif profType == "Electrical":
             select=request.form.getlist("elecCB", None)
 
-        elif professionType == "Geomatics":
+        elif profType == "Geomatics":
             select=request.form.getlist("geoCB", None)
 
-        elif professionType == "Mechanical":
+        elif profType == "Mechanical":
             select=request.form.getlist("mechCB", None)
 
-        elif professionType == "Software":
+        elif profType == "Software":
             select=request.form.getlist("softCB", None)
 
         cursor=mysql.connection.cursor()
         cursor.execute("""INSERT INTO Question_Post (Username, Title, Body, Timestamp, Profession, ProfessionCategory, Tags)
-             VALUES (%s, %s, %s, %s, %s, %s, %s)""", (username, title, body, timestamp, "Engineer", professionType, select))
+             VALUES (%s, %s, %s, %s, %s, %s, %s)""", (username, title, body, timestamp, "Engineer", profType, select))
 
         mysql.connection.commit()
         cursor.execute("SELECT MAX(QuestionPostID) FROM Question_Post WHERE Username=%s", (username,))
