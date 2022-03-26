@@ -3,58 +3,58 @@ from datetime import datetime
 class Posts:
     def viewPost(self, id):
         from Database import mysql
-        
+
         cursor=mysql.connection.cursor()
-        cursor.execute("""SELECT Title, Username, Timestamp, Profession, ProfessionCategory, Body FROM 
+        cursor.execute("""SELECT Title, Username, Timestamp, Profession, ProfessionCategory, Tags, Body FROM
             Question_Post WHERE QuestionPostID=""" + id)
 
         result1=cursor.fetchall()
         cursor.execute("SELECT Username, Timestamp, Body FROM Answer_Post WHERE QID=" + id)
         result2=cursor.fetchall()
         cursor.close()
-        
+
         return result1, result2      # Return list of result from MySQL queries
     # end of def
 
     def postQuestion(self, username):
         from App import request
         from Database import mysql
-        
+
         title=request.form.get("title", None)
         body=request.form.get("ques", None)
-        profession=request.form.get("prof", None)
+        professionType=request.form.get("prof", None)
         timestamp=datetime.now().replace(microsecond=0)
 
         global select   # Make variable accessible to if/else/elif blocks
 
         # Check which dropdown menu option was selected and get all checkboxes under that category
-        if profession == "Civil":
+        if professionType == "Civil":
             select=request.form.getlist("civilCB", None)
 
-        elif profession == "Chemical":
+        elif professionType == "Chemical":
             select=request.form.getlist("chemCB", None)
 
-        elif profession == "Electrical":
+        elif professionType == "Electrical":
             select=request.form.getlist("elecCB", None)
 
-        elif profession == "Geomatics":
+        elif professionType == "Geomatics":
             select=request.form.getlist("geoCB", None)
 
-        elif profession == "Mechanical":
+        elif professionType == "Mechanical":
             select=request.form.getlist("mechCB", None)
 
-        elif profession == "Software":
+        elif professionType == "Software":
             select=request.form.getlist("softCB", None)
 
         cursor=mysql.connection.cursor()
-        cursor.execute("""INSERT INTO Question_Post (Username, Title, Body, Timestamp, Profession, ProfessionCategory)
-             VALUES (%s, %s, %s, %s, %s, %s)""", (username, title, body, timestamp, profession, select))
+        cursor.execute("""INSERT INTO Question_Post (Username, Title, Body, Timestamp, Profession, ProfessionCategory, Tags)
+             VALUES (%s, %s, %s, %s, %s, %s, %s)""", (username, title, body, timestamp, "Engineer", professionType, select))
 
         mysql.connection.commit()
         cursor.execute("SELECT MAX(QuestionPostID) FROM Question_Post WHERE Username=%s", (username,))
         results=cursor.fetchone()
         cursor.close()
-        
+
         return str(results[0])      # Return ID of most recent question posted by user
     # end of def
 
@@ -93,7 +93,7 @@ class Posts:
 
         return result
     # end of def
-    
+
     def postAnswer(self, username, qid):
         from App import request
         from Database import mysql
@@ -104,8 +104,8 @@ class Posts:
         cursor.execute("SELECT Profession FROM Profiles WHERE Username=%s", (username,))
         profession=cursor.fetchall()
 
-        cursor.execute("""INSERT INTO Answer_Post (QID, Username, Body, Timestamp, Profession)
-            VALUES (""" + qid + """, %s, %s, %s, %s)""", (username, answer, timestamp, profession))
+        cursor.execute("""INSERT INTO Answer_Post (QID, Username, Body, Timestamp)
+            VALUES (""" + qid + """, %s, %s, %s)""", (username, answer, timestamp))
 
         mysql.connection.commit()
     # end of def
