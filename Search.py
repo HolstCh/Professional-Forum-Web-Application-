@@ -1,13 +1,6 @@
 class Search:
     # Note: default constructor is used
 
-    def getQuery(self):
-        from App import request
-        query=request.form.get("basicSearch")
-        
-        return query
-    # end of def
-
     def searchResults(self, query):
         from Database import mysql
 
