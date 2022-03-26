@@ -1,6 +1,6 @@
 <html>
     <link href='https://fonts.googleapis.com/css?family=Audiowide' rel='stylesheet'>
-    
+
     <style>
         .header h1
         {
@@ -24,7 +24,6 @@
 
     <body>
         <form method="POST">
-            {% for item in data %}
             <p>
                 <label for="fName"> First Name: <span style="color:red">*</span> </label>
                 <br>
@@ -82,8 +81,6 @@
             <br>
 
             <p> <button type="submit"> Submit </button> </p>
-
-            {% endfor %}
         </form>
     </body>
 </html>

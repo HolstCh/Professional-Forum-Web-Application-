@@ -51,9 +51,9 @@ def session():
 
 @pytest.fixture
 def setupDB(session):
-    session.execute('''CREATE TABLE USERS
-                          (username varchar(255) NOT NULL, password varchar(255), PRIMARY KEY (username))''')  # 3
-    session.execute('INSERT INTO USERS VALUES ("chad", "holst")')
+    session.execute('''CREATE TABLE Users
+                          (Username varchar(255) NOT NULL, Password varchar(255), PRIMARY KEY (Username))''')  # 3
+    session.execute('INSERT INTO Users VALUES ("chad", "holst")')
     session.connection.commit()
 
 

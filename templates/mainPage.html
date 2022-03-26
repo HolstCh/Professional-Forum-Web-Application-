@@ -5,7 +5,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto Slab' rel='stylesheet'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <style>
       .header h1 /* target header h1 */
       {
@@ -156,7 +156,7 @@
           overflow: hidden;
           background-color: #ffffff;
           border-radius: 5px;
-          padding-top: 70px;
+          padding-top: 72px;
           height: auto;
           width: auto;
           margin-left: 175px;
@@ -172,7 +172,7 @@
     {
       display: inline-block;
       position: relative;
-      top:6px;
+      top:8px;
       margin-left: 115px;
       border: 3px solid #151414;
       border-radius: 2100px;
@@ -211,19 +211,19 @@
       background-color: #00A4BD;
     }
       </style>
-    
+
       <title>
       </title>
   </head>
-  
+
   <body>
     <div class = "header h1 fixed" id="main_header" style="background-color: #ffffff">
         <div class = "logo">
           <img src="/static/professional_logo.jpg" width="50" height="50" style="float:left" alt="logo">
         </div>
-      
+
         <h1>KnowPros</h1>
-      
+
         <form method="post" autocomplete="off">
             <label>
                 <input type="text" name="basicSearch" id ="basicSearch" placeholder="Search KnowPros...">
@@ -243,7 +243,7 @@
     </div>
 
     <div class="sideNav">
-      <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+      <a href="http://knowpros.pythonanywhere.com"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
       <!--
       <a href="http://127.0.0.1:5000/login"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbspMy Profile</a>
       <a href="http://127.0.0.1:5000/login"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbspEdit Profile</a>
@@ -258,9 +258,9 @@
       {% for item in data %}
         <p><div>
             <a href="../post/view/{{item[0]}}">{{item[2]}}</a>
-            
+
             <br>
-            
+
             {{item[3]}}
 
             <div class="tags">

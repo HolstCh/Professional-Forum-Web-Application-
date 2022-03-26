@@ -117,3 +117,4 @@ class Login:
 # print("\nTEST 4")
 # myLogin4 = Login('tester3', 'password1',db_connection)  #this should be allowed
 # myLogin4.add_login()
+

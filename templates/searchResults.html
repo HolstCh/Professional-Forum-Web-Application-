@@ -162,12 +162,12 @@
                 height: auto;
                 width: auto;
                 margin-left: 175px;
-                
+
                 margin-right: 10px;
                 margin-bottom: 10px;
             }
 
-            .tags
+            .extras
             {
                 margin-top: 5px;
                 font-size: 16px;
@@ -176,7 +176,7 @@
 
         <title></title>
     </head>
-        
+
     <body>
         <div class = "header h1 fixed" id="main_header" style="background-color: #ffffff">
             <div class = "logo">
@@ -191,33 +191,33 @@
                 </label>
 
                 {% if username is none %}
-                <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
-                <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
+                <a href = "http://knowpros.pythonanywhere.com/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
+                <a href = "http://knowpros.pythonanywhere.com/login" class = "headerButton" style=margin-left:5px>Login</a>
                 <!-- <a href = "" class = "headerButton" style=margin-left:5px>Advanced Search</a> -->
 
                 {% else %}
-                <a href = "http://127.0.0.1:5000/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
-                <a href="http://127.0.0.1:5000/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
-                
+                <a href = "http://knowpros.pythonanywhere.com/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
+                <a href="http://knowpros.pythonanywhere.com/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
+
                 {% endif %}
             </form>
         </div>
 
         <div class="sideNav">
-            
-            
+
+
             {% if username %}
-            <a href="http://127.0.0.1:5000/registeredMain/{{username}}"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
-            <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
-            <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
-            <a href="http://127.0.0.1:5000/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
-            <a href="http://127.0.0.1:5000/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
+            <a href="http://knowpros.pythonanywhere.com/registeredMain/{{username}}"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://knowpros.pythonanywhere.com/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
+            <a href="http://knowpros.pythonanywhere.com/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
+            <a href="http://knowpros.pythonanywhere.com/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
+            <a href="http://knowpros.pythonanywhere.com/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
 
             {% else %}
-            <a href="http://127.0.0.1:5000"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://knowpros.pythonanywhere.com"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
 
             {% endif %}
-            
+
             <!--
             <a href="#About Us"><i class="ASr"></i> ?</a>
             <a href="#Contact"><i class="C"></i> ?</a>
@@ -231,17 +231,22 @@
 
             {% for item in data %}
                 <p><div>
+                    <!-- Question title as hyperlink -->
                     <a href="../post/view/{{item[0]}}">{{item[2]}}</a>
-                    
-                    <br>
-                    
-                    {{item[3]}}
 
-                    <div class="tags">
-                        Profession: {{item[7]}} &nbsp; &nbsp; Tags: {{item[8]}}
+                    <br>
+
+                    {{item[3]}}     <!-- Question body -->
+
+                    <div class="extras">
+                        Profession: {{item[7]}}
+                        <br>
+                        Profession Category: {{item[8]}}
+                        <br>
+                        Tags: {{item[9]}}
                     </div>
                 </div></p>
-                
+
                 <br>
             {% endfor %}
         </div>

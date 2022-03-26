@@ -161,7 +161,7 @@
                 height: auto;
                 width: auto;
                 margin-left: 175px;
-                
+
                 margin-right: 10px;
                 margin-bottom: 10px;
             }
@@ -190,7 +190,7 @@
 
         <title></title>
     </head>
-        
+
     <body>
         <div class = "header h1 fixed" id="main_header" style="background-color: #ffffff">
             <div class = "logo">
@@ -205,29 +205,29 @@
                 </label>
 
                 {% if username is none %}
-                <a href = "http://127.0.0.1:5000/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
-                <a href = "http://127.0.0.1:5000/login" class = "headerButton" style=margin-left:5px>Login</a>
+                <a href = "http://knowpros.pythonanywhere.com/signUp" class = "headerButton" style=margin-right:13px>Sign Up</a>
+                <a href = "http://knowpros.pythonanywhere.com/login" class = "headerButton" style=margin-left:5px>Login</a>
                 <!-- <a href = "" class = "headerButton" style=margin-left:5px>Advanced Search</a> -->
 
                 {% else %}
-                <a href = "http://127.0.0.1:5000/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
-                <a href="http://127.0.0.1:5000/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
-                
+                <a href = "http://knowpros.pythonanywhere.com/unregisteredMain" class = "headerButton" style="margin-right:13px">Sign Out</a>
+                <a href="http://knowpros.pythonanywhere.com/post/question" class="headerButton" style="margin-right:13px">Create Question</a>
+
                 {% endif %}
             </form>
         </div>
 
         <div class="sideNav">
-            
+
             {% if username %}
-            <a href="http://127.0.0.1:5000/registeredMain/{{username}}"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
-            <a href="http://127.0.0.1:5000/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
-            <a href="http://127.0.0.1:5000/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
-            <a href="http://127.0.0.1:5000/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
-            <a href="http://127.0.0.1:5000/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
-            
+            <a href="http://knowpros.pythonanywhere.com/registeredMain/{{username}}"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://knowpros.pythonanywhere.com/profile/view/{{username}}"><img src="/static/profile.png" width="30" height="30" style="float:left"><i class="MP"></i> &nbsp My Profile</a>
+            <a href="http://knowpros.pythonanywhere.com/profile/edit/{{username}}"><img src="/static/yellow_star.png" width="28" height="28" style="float:left" ><i class="TP"></i>&nbsp Edit Profile</a>
+            <a href="http://knowpros.pythonanywhere.com/questions/{{username}}"><img src="/static/question_mark.png" width="30" height="30" style="float: left">&nbsp Question History</a>
+            <a href="http://knowpros.pythonanywhere.com/answers/{{username}}"><img src="/static/pen_and_paper.png" width="30" height="30" style="float: left">&nbsp Answer History</a>
+
             {% else %}
-            <a href="http://127.0.0.1:5000/registeredMain"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
+            <a href="http://knowpros.pythonanywhere.com/registeredMain"><img src="/static/home.png" width="25" height="25" style="float:left"><i class="H"></i>&nbsp Home</a>
 
             {% endif %}
 
@@ -244,16 +244,18 @@
             <p>
                 <b>{{item[0]}}</b>     <!-- Question Title -->
                 <br>
-                {{item[1]}} &nbsp {{item[2]}}     <!-- Question and Timestamp -->
+                {{item[1]}} &nbsp {{item[2]}}     <!-- Question Body and Timestamp -->
                 <br>
-                {{item[3]}}     <!-- Question Profession -->
+                {{item[3]}}     <!-- User Profession -->
                 <br>
-                {{item[4]}}     <!-- Question Tags -->
+                {{item[4]}}     <!-- User Profession Category -->
+                <br>
+                {{item[5]}}      <!-- Question Tags -->
 
                 <table>
                     <tr>
                         <td>
-                            {{item[5]}}     <!-- Question Body -->
+                            {{item[6]}}     <!-- Question Body -->
                         </td>
                     </tr>
                 </table>
@@ -291,7 +293,7 @@
             <form method="post">
                 <h3> POST ANSWER </h3>
                 <textarea name="ans" id="ans" autocomplete="off" oninput="adjustArea(this)" required></textarea>
-                
+
                 <br>
 
                 <button type="submit"> SUBMIT </button>
