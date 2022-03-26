@@ -30,8 +30,7 @@ def unregisteredMain():
     if request.method == "POST":
         profFilter = request.form["inputProfession"]
         professionFilter = profFilter
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -48,8 +47,7 @@ def registeredMain(username):
     if request.method == "POST":
         profFilter = request.form["inputProfession"]
         professionFilter = profFilter
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -67,8 +65,8 @@ def search(query):
     if request.method == "GET":
         MySearch = Search()
         MyFilter = Filter()
-        results = MySearch.searchResults(query)
-        results = MyFilter.professionType(results, professionFilter)
+        query=request.form.get("basicSearch")
+        results = MyFilter.professionType(query, professionFilter)
         if results:
             return render_template("searchResults.html", data=results, username=username)
 
@@ -76,8 +74,7 @@ def search(query):
             return render_template("searchResults.html", username=username, msg="No results...")
 
     elif request.method == "POST":
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -86,23 +83,21 @@ def search(query):
 @app.route("/addCompany/<username>", methods=["GET", "POST"])
 def addCompany(username):
     if request.method == "POST" and request.form.get("basicSearch") == None:
+        name = request.form.get("company", None)
+        position = request.form.get("position", None)
+        start = request.form.get("start", None)
+        end = request.form.get("end", None)
         profile = Profile()
-        profile.addCompany(username)
+        profile.addCompany(username, name, position, start, end)
         flash("Company added successfully")
 
         return render_template("addCompany.html", username = username)
 
-
-#         return render_template("addCompany.html", username=username)
-
     elif request.method == "GET":
         return render_template("addCompany.html", username = username)
 
-#         return render_template("addCompany.html", username=username)
-
     elif request.method == "POST" and request.form.get("basicSearch") != None:
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("../../query=" + query)
 
@@ -149,8 +144,17 @@ def createProfile(username):
    # global data
 
     if request.method == "POST":
+        fName=request.form.get("fName", None)
+        mNames=request.form.get("mNames", None)
+        lName=request.form.get("lName", None)
+        email=request.form.get("email", None)
+        curComp=request.form.get("curComp", None)
+        prof=request.form.get("prof", None)
+        skills=request.form.get("skills", None)
+        desc=request.form.get("desc", None)
+        pastProjs=request.form.get("proj", None)
         myProfile = Profile()
-        myProfile.createProfile(username)
+        myProfile.createProfile(username, fName, mNames, lName, email, curComp, prof, skills, desc, pastProjs)
 
         return redirect(url_for('registeredMain'))
 
@@ -168,8 +172,7 @@ def viewProfile(username):
         return render_template("viewProfile.html", profile=profile, companies=companies, username=username)
     
     elif request.method == "POST" and request.form.get("basicSearch") != None:
-        MySearch=Search()
-        query=MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("../../../query=" + query)
 
@@ -186,14 +189,22 @@ def editProfile(username):
         return render_template("editProfile.html", data=data, username=username)
 
     elif request.method == "POST" and request.form.get("basicSearch") == None:
+        fName=request.form.get("fName", None)
+        mNames=request.form.get("mNames", None)
+        lName=request.form.get("lName", None)
+        email=request.form.get("email", None)
+        curComp=request.form.get("curComp", None)
+        prof=request.form.get("prof", None)
+        skills=request.form.get("skills", None)
+        desc=request.form.get("desc", None)
+        pastProjs=request.form.get("proj", None)
         myProfile = Profile()
-        myProfile.pushEdits(username)
+        myProfile.pushEdits(username, fName, mNames, lName, email, curComp, prof, skills, desc, pastProjs)
 
         return redirect("/view/" + username)
 
     elif request.method == "POST" and request.form.get("basicSearch") != None:
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -210,8 +221,7 @@ def questionHistory(username):
             return render_template("questionHistory.html", username=username, msg="No question history...")
 
     elif request.method == "POST":
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -228,8 +238,7 @@ def answerHistory(username):
             return render_template("answerHistory.html", username=username, msg="No answer history...")
 
     elif request.method == "POST":
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -240,14 +249,16 @@ def newQuestion():
         return render_template("questionPost.html", username=username)
 
     elif request.method == "POST" and request.form.get("basicSearch") == None:
+        title=request.form.get("title", None)
+        body=request.form.get("ques", None)
+        profType=request.form.get("prof", None)
         myPost = Posts()
-        qid = myPost.postQuestion(username)
+        qid = myPost.postQuestion(username, title, body, profType)
 
         return redirect("./view/" + qid)
 
     elif request.method == "POST" and request.form.get("basicSearch") != None:
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
@@ -262,16 +273,16 @@ def viewPost(qid):
         return render_template("viewPost.html", question=question, answers=answers, username=username)
 
     elif request.method == "POST" and request.form.get("basicSearch") == None:
+        answer=request.form.get("ans")
         myPost = Posts()
-        myPost.postAnswer(username, qid)
+        myPost.postAnswer(username, qid, answer)
         question = myPost.viewPost(qid)[0]
         answers = myPost.viewPost(qid)[1]
 
         return render_template("viewPost.html", question=question, answers=answers, username=username)
 
     elif request.method == "POST" and request.form.get("basicSearch") != None:
-        MySearch = Search()
-        query = MySearch.getQuery()
+        query = request.form.get("basicSearch")
 
         return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
