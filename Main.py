@@ -274,7 +274,7 @@ def newQuestion():
             tags=request.form.getlist("softCB", None)
             
         myPost = Posts()
-        qid = myPost.postQuestion(username, title, body, profType, tags)
+        qid = myPost.postQuestion(username, title, body, profType, str(tags))
 
         return redirect("./view/" + qid)
 
