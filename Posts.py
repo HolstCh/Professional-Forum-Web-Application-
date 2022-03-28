@@ -79,8 +79,8 @@ class Posts:
         cursor.execute("SELECT Profession FROM Profiles WHERE Username=%s", (username,))
         profession=cursor.fetchall()
 
-        cursor.execute("""INSERT INTO Answer_Post (QID, Username, Body, Timestamp)
-            VALUES (""" + qid + """, %s, %s, %s)""", (username, answer, timestamp))
+        cursor.execute("""INSERT INTO Answer_Post (QID, Username, Body, Timestamp, Profession)
+            VALUES (""" + qid + """, %s, %s, %s, %s)""", (username, answer, timestamp, Profession))
 
         mysql.connection.commit()
     # end of def
