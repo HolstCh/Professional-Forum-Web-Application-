@@ -289,5 +289,130 @@ def viewPost(qid):
 
 # --------------------------------------------------------------------------------------------------------------------- #
 
+@app.route("/api/user", methods=["GET", "POST"])
+def apiUsers():
+    from Login import Login
+
+    if request.method == "GET" and request.get_json() != None:
+        data=request.get_json()
+        username=data["username"]
+        password=data["password"]
+
+        myLogin=Login(username, password)
+        user=myLogin.validate()
+
+        return jsonify(user)
+
+    elif request.method == "POST" and request.get_json() != None:
+        data=request.get_json()
+        username=data["username"]
+        password=data["password"]
+        myLogin=Login(username, password)
+        myLogin.add_login()
+
+        return "Login created successfully!"
+
+@app.route("/api/profile", methods=["GET", "POST"])
+def apiProfile():
+    from Profile import Profile
+    
+    if request.method == "GET" and request.get_json() != None:
+        username=request.get_json()["username"]
+        myProfile=Profile()
+        profile=myProfile.getProfile(username)
+
+        return jsonify(profile)
+
+    elif request.method == "POST" and request.get_json() != None:
+        data=request.get_json()
+        username=data["username"]
+        firstName=data["first name"]
+        middleNames=data["middle names"]
+        lastName=data["last name"]
+        email=data["email"]
+        currentCompany=data["current company"]
+        profession=data["profession"]
+        skills=data["skills"]
+        description=data["description"]
+        projects=data["projects"]
+
+        myProfile=Profile()
+        myProfile.createProfile(username, firstName, middleNames, lastName, email, currentCompany, profession, skills,
+            description, projects)
+
+        return "Profile created successfully!"
+
+@app.route("/api/question", methods=["GET", "POST"])
+def apiQuestion():
+    from Posts import Posts
+
+    if request.method == "GET" and request.get_json() != None:
+        qid=request.get_json()["id"]
+        myPost=Posts()
+        question=myPost.viewPost(qid)[0]
+
+        return jsonify(question)
+
+    elif request.method == "POST" and request.get_json() != None:
+        data=request.get_json()
+        username=data["username"]
+        title=data["title"]
+        body=data["body"]
+        professionCategory=data["profession category"]
+        tags=data["tags"]
+
+        myPost=Posts()
+        myPost.postQuestion(username, title, body, professionCategory, tags)
+
+        return "Question successfully added!"
+
+@app.route("/api/answer", methods=["GET", "POST"])
+def apiAnswer():
+    from Posts import Posts
+
+    if request.method == "GET" and request.get_json() != None:
+        aid=request.get_json()["id"]
+        myPost=Posts()
+        answer=myPost.getAnswer(aid)
+
+        return jsonify(answer)
+
+    elif request.method == "POST" and request.get_json() != None:
+        data=request.get_json()
+        username=data["username"]
+        qid=data["qid"]
+        body=data["body"]
+
+        myPost=Posts()
+        myPost.postAnswer(username, qid, body)
+
+        return "Answer successfully added!"
+
+@app.route("/api/pastCompany", methods=["GET", "POST"])
+def apiPastCompanies():
+    from Profile import Profile
+
+    if request.method == "GET" and request.get_json() != None:
+        username=str(request.get_json()["username"])
+        myProfile=Profile()
+        pastCompanies=myProfile.getPastCompanies(username)
+
+        return jsonify(pastCompanies)
+
+    elif request.method == "POST" and request.get_json() != None:
+        data=request.get_json()
+        username=data["username"]
+        company=data["company"]
+        position=data["position"]
+        start=data["start"]
+        end=data["end"]
+
+        myProfile=Profile()
+        myProfile.addCompany(username, company, position, start, end)
+
+        return "Past Company successfully added!"
+
+# --------------------------------------------------------------------------------------------------------------------- #
+
 if __name__ == '__main__':
     app.run(debug=True)
