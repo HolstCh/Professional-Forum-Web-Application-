@@ -84,5 +84,15 @@ class Posts:
 
         mysql.connection.commit()
     # end of def
+    
+    def getAnswer(self, aid):
+        from Database import mysql
+
+        cursor=mysql.connection.cursor()
+        cursor.execute("SELECT * FROM Answer_Post WHERE AID=" + aid)
+        result=cursor.fetchall()
+
+        return result
+    # end of def
 
 # end of class
