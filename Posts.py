@@ -22,27 +22,6 @@ class Posts:
 
         timestamp=datetime.now().replace(microsecond=0)
 
-        global select   # Make variable accessible to if/else/elif blocks
-
-        # Check which dropdown menu option was selected and get all checkboxes under that category
-        if profType == "Civil":
-            select=request.form.getlist("civilCB", None)
-
-        elif profType == "Chemical":
-            select=request.form.getlist("chemCB", None)
-
-        elif profType == "Electrical":
-            select=request.form.getlist("elecCB", None)
-
-        elif profType == "Geomatics":
-            select=request.form.getlist("geoCB", None)
-
-        elif profType == "Mechanical":
-            select=request.form.getlist("mechCB", None)
-
-        elif profType == "Software":
-            select=request.form.getlist("softCB", None)
-
         cursor=mysql.connection.cursor()
         cursor.execute("""INSERT INTO Question_Post (Username, Title, Body, Timestamp, Profession, ProfessionCategory, Tags)
              VALUES (%s, %s, %s, %s, %s, %s, %s)""", (username, title, body, timestamp, "Engineer", profType, select))
