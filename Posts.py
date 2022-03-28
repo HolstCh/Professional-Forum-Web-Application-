@@ -16,7 +16,7 @@ class Posts:
         return result1, result2      # Return list of result from MySQL queries
     # end of def
 
-    def postQuestion(self, username, title, body, profType):
+    def postQuestion(self, username, title, body, profType, tags):
         from App import request
         from Database import mysql
 
