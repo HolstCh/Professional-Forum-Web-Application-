@@ -13,7 +13,7 @@ from Search import *
 from Posts import *
 from PostHistory import *
 
-HOST = "http://127.0.0.1:5000/"
+HOST = "knowpros.pythonanywhere.com"
 username = None
 professionFilter = None
 
@@ -32,7 +32,7 @@ def unregisteredMain():
         professionFilter = profFilter
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
     else:
         myPost = Posts()
@@ -49,7 +49,7 @@ def registeredMain(username):
         professionFilter = profFilter
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
     else:
         myPost = Posts()
@@ -76,7 +76,7 @@ def search(query):
     elif request.method == "POST":
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 
@@ -206,7 +206,7 @@ def editProfile(username):
     elif request.method == "POST" and request.form.get("basicSearch") != None:
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/questions/<username>", methods=["GET", "POST"])
@@ -223,7 +223,7 @@ def questionHistory(username):
     elif request.method == "POST":
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/answers/<username>", methods=["GET", "POST"])
@@ -240,7 +240,7 @@ def answerHistory(username):
     elif request.method == "POST":
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/post/question", methods=["GET", "POST"])
@@ -260,7 +260,7 @@ def newQuestion():
     elif request.method == "POST" and request.form.get("basicSearch") != None:
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 @app.route("/post/view/<qid>", methods=["GET", "POST"])
@@ -284,7 +284,7 @@ def viewPost(qid):
     elif request.method == "POST" and request.form.get("basicSearch") != None:
         query = request.form.get("basicSearch")
 
-        return redirect("http://127.0.0.1:5000/query=" + query)
+        return redirect("http://knowpros.pythonanywhere.com/query=" + query)
 
 
 # --------------------------------------------------------------------------------------------------------------------- #
