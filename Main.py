@@ -252,8 +252,29 @@ def newQuestion():
         title=request.form.get("title", None)
         body=request.form.get("ques", None)
         profType=request.form.get("prof", None)
+        global select   # Make variable accessible to if/else/elif blocks
+
+        # Check which dropdown menu option was selected and get all checkboxes under that category
+        if profType == "Civil":
+            select=request.form.getlist("civilCB", None)
+
+        elif profType == "Chemical":
+            select=request.form.getlist("chemCB", None)
+
+        elif profType == "Electrical":
+            select=request.form.getlist("elecCB", None)
+
+        elif profType == "Geomatics":
+            select=request.form.getlist("geoCB", None)
+
+        elif profType == "Mechanical":
+            select=request.form.getlist("mechCB", None)
+
+        elif profType == "Software":
+            select=request.form.getlist("softCB", None)
+            
         myPost = Posts()
-        qid = myPost.postQuestion(username, title, body, profType)
+        qid = myPost.postQuestion(username, title, body, profType, str(tags))
 
         return redirect("./view/" + qid)
 
