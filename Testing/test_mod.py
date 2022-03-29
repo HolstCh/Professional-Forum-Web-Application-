@@ -67,82 +67,95 @@ def test_professionType():
     assert expected == actual, "tuple should be removed if profession column from QUESTION_POSTS is different than professionFilter"
 
 
-# Routing tests
-class routeTests(unittest.TestCase):
-    #global tester
-    tester=app.test_client()
+tester=app.test_client()    # For route and HTML form tests
 
-    def test_homePage(self):
-        response=self.tester.get("/")
-        
-        assert response.status_code == 302, "Page should redirect"
+def test_homePage(self):
+    response=self.tester.get("/")
 
-    def test_mainPage(self):
-        response=self.tester.get("/unregisteredMain")
+    assert response.status_code == 302, "Page should redirect"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_mainPage(self):
+    response=self.tester.get("/unregisteredMain")
 
-    def test_registeredMain(self):
-        response=self.tester.get("/registeredMain/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_registeredMain(self):
+    response=self.tester.get("/registeredMain/test1")
 
-    def test_query(self):
-        response=self.tester.get("/query=a")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_query(self):
+    response=self.tester.get("/query=a")
 
-    def test_login(self):
-        response=self.tester.get("/login")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_login(self):
+    response=self.tester.get("/login")
 
-    def test_signUp(self):
-        response=self.tester.get("/createProfile/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_signUp(self):
+    response=self.tester.get("/createProfile/test1")
 
-    def test_createProfile(self):
-        response=self.tester.get("/signUp")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_createProfile(self):
+    response=self.tester.get("/signUp")
 
-    def test_viewProfile(self):
-        response=self.tester.get("/profile/view/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_viewProfile(self):
+    response=self.tester.get("/profile/view/test1")
 
-    def test_editProfile(self):
-        response=self.tester.get("/profile/edit/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_editProfile(self):
+    response=self.tester.get("/profile/edit/test1")
 
-    def test_questionHistory(self):
-        response=self.tester.get("/questions/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_questionHistory(self):
+    response=self.tester.get("/questions/test1")
 
-    def test_answerHistory(self):
-        response=self.tester.get("/answers/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_answerHistory(self):
+    response=self.tester.get("/answers/test1")
 
-    def test_postQuestion(self):
-        response=self.tester.get("/post/question")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_postQuestion(self):
+    response=self.tester.get("/post/question")
 
-    def test_viewPost(self):
-        response=self.tester.get("/post/view/1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_viewPost(self):
+    response=self.tester.get("/post/view/1")
 
-    def test_addCompany(self):
-        response=self.tester.get("/addCompany/test1")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 200, "Page should exist and load without errors"
+def test_addCompany(self):
+    response=self.tester.get("/addCompany/test1")
 
-    def test_fakePage(self):
-        response=self.tester.get("/somepageurl")
+    assert response.status_code == 200, "Page should exist and load without errors"
 
-        assert response.status_code == 404, "Page should not exist"
+def test_fakePage(self):
+    response=self.tester.get("/somepageurl")
+
+    assert response.status_code == 404, "Page should not exist"
+
+def test_loginFormValid():
+    response=tester.post("/login", data={
+        "username": "dmah",
+        "password": "dmah"
+    })
+
+    assert response.status_code==302, "Login should be valid and redirect"
+
+def test_loginFormValid():
+    response=tester.post("/login", data={
+        "username": "invalidUser",
+        "password": "invalidPass"
+    })
+
+    assert response.status_code==200, "Login should be invalid and not redirect"        
