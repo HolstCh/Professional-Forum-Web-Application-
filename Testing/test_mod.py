@@ -19,40 +19,6 @@ import mysql.connector
 import unittest
 from unittest.mock import MagicMock
 
-#dbc=mysql.connector.connect(
-#    host="localhost",
-#    user="root",
-#    password="draGGun.!382",
-#    database="seng401"
-#)
-
-#cursor=dbc.cursor()
-
-#@pytest.fixture()
-#def appTest():
-#    testMyApp = Flask(__name__)
-#    testMyApp.config.update({ "TESTING": True })
-#    yield testMyApp
-
-#@pytest.fixture
-#def client(appTest):
-#    return appTest.test_client()
-
-#@pytest.fixture
-#def runner(appTest):
-#    return appTest.test_cli_runner()
-
-# Login class tests:
-#def test_validate():
-#    #from Login import Login
-
-#    myLogin = Login("chad", "holst")
-#    actual = myLogin.validate()
-#    expected = [("chad", "holst"), ]
-#    print(expected, actual)
-#    assert expected == actual, "input should be valid and produce list of tuples"
-
-
 # Filter class test:
 def test_professionType():
     from Filter import Filter
