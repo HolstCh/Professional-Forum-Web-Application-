@@ -187,10 +187,26 @@ def test_createProfileSuccessfulRedirect():
                            "email": "fake@email.com",
                            "curComp": "DGC",
                            "prof": "Engineer",
-                           "skills": "fixing machinery",
+                           "skills": "machinery design",
                            "desc": "hands on",
-                           "proj": "forklift overhaul"
+                           "proj": "designing engine"
                            })
+    assert response.status_code == 302, "User should provide all input fields to complete profile and redirect"
+    
+# requires username of "chad" in USERS:
+# test for editing profile functionality:
+def test_editProfile():
+    response = tester.post("/profile/edit/chad", data={
+        "fName": "chad",
+        "mNames": "daniel",
+        "lName": "holst",
+        "email": "fake@email.com",
+        "curComp": "DGC",
+        "prof": "Engineer",
+        "skills": "circuit building",
+        "desc": "hands on",
+        "proj": "designing electrical grid"
+    })
     assert response.status_code == 302, "User should provide all input fields to complete profile and redirect"
 
 # requires username "chad" in USERS
