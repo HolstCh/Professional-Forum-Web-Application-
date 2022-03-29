@@ -20,6 +20,7 @@ import unittest
 from unittest.mock import MagicMock
 
 # Filter class test:
+# Test Case: 1
 def test_professionType():
     from Filter import Filter
 
@@ -34,83 +35,97 @@ def test_professionType():
 
 tester=app.test_client()    # For route and HTML form tests
 
+# Test Case: 2
 def test_homePage(self):
     response=self.tester.get("/")
 
     assert response.status_code == 302, "Page should redirect"
 
+# Test Case: 3
 def test_mainPage(self):
     response=self.tester.get("/unregisteredMain")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 4
 def test_registeredMain(self):
     response=self.tester.get("/registeredMain/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
-
+    
+# Test Case: 5
 def test_query(self):
     response=self.tester.get("/query=a")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 6
 def test_login(self):
     response=self.tester.get("/login")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 7
 def test_signUp(self):
     response=self.tester.get("/createProfile/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 8
 def test_createProfile(self):
     response=self.tester.get("/signUp")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 9
 def test_viewProfile(self):
     response=self.tester.get("/profile/view/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 10
 def test_editProfile(self):
     response=self.tester.get("/profile/edit/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 11
 def test_questionHistory(self):
     response=self.tester.get("/questions/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 12
 def test_answerHistory(self):
     response=self.tester.get("/answers/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 13
 def test_postQuestion(self):
     response=self.tester.get("/post/question")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 14
 def test_viewPost(self):
     response=self.tester.get("/post/view/1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 15
 def test_addCompany(self):
     response=self.tester.get("/addCompany/test1")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
+# Test Case: 16
 def test_fakePage(self):
     response=self.tester.get("/somepageurl")
 
     assert response.status_code == 404, "Page should not exist"
 
-
-
+# Test Case: 17
 def test_loginFormValid():
     response=tester.post("/login", data={
         "username": "dmah",
@@ -119,6 +134,7 @@ def test_loginFormValid():
 
     assert response.status_code==302, "Login should be valid and redirect"
 
+# Test Case: 18
 def test_loginFormValid():
     response=tester.post("/login", data={
         "username": "invalidUser",
@@ -126,8 +142,9 @@ def test_loginFormValid():
     })
 
     assert response.status_code==200, "Login should be invalid and not redirect"
-    
+
 # tests for sign up functionality:
+# Test Case: 19
 def test_signUpDoesNotExist():
     response = tester.post("/signUp", data={
         "username": "newUser",
@@ -136,6 +153,7 @@ def test_signUpDoesNotExist():
     assert response.status_code == 302, "User should provide new username that does not exist to redirect after sign up"
 
 # requires username "chad" in USERS
+# Test Case: 20
 def test_signUpDoesExist():
     response = tester.post("/signUp", data={
         "username": "chad",
@@ -145,6 +163,7 @@ def test_signUpDoesExist():
 
 # requires username "chad" in USERS
 # test for create profile functionality:
+# Test Case: 21
 def test_createProfileSuccessfulRedirect():
     response = tester.post("/createProfile/chad", data={
                            "fName": "chad",
@@ -161,6 +180,7 @@ def test_createProfileSuccessfulRedirect():
     
 # requires username of "chad" in USERS:
 # test for editing profile functionality:
+# Test Case: 22
 def test_editProfile():
     response = tester.post("/profile/edit/chad", data={
         "fName": "chad",
@@ -177,6 +197,7 @@ def test_editProfile():
 
 # requires username "chad" in USERS
 # test for add company functionality:
+# Test Case: 23
 def test_addCompanySuccessful():
     response = tester.post("/addCompany/chad", data={
                            "company": "Apple",
@@ -188,6 +209,7 @@ def test_addCompanySuccessful():
 
 # requires post with similar search bar input, "testSearch"
 # tests for search post functionality:
+# Test Case: 24
 def test_searchForQueryRoute():
     response = tester.post("/query=test", data={
                            "basicSearch": "testSearch",
@@ -196,6 +218,7 @@ def test_searchForQueryRoute():
     assert response.status_code == 302, "Question search should redirect to search query route"
 
 # requires post with similar search bar input, "testSearch"
+# Test Case: 25
 def test_questionPostSearch():
     response = tester.post("/post/question/", data={
                            "basicSearch": "testSearch"
@@ -203,6 +226,7 @@ def test_questionPostSearch():
     assert response.status_code == 302, "Question search should redirect to search query route"
 
 # requires post with similar search bar input, "testSearch" and post with qid of 1
+# Test Case: 26
 def test_viewPostSearch():
     response = tester.post("/post/view/1", data={
                            "basicSearch": "testSearch"
@@ -210,6 +234,7 @@ def test_viewPostSearch():
     assert response.status_code == 302, "Question search should redirect to search query route"
 
 # creating new question and adding it to local database
+# Test Case: 27
 def test_questionForm():
     tester.post("/login", data={
         "username": "dmah",
@@ -226,6 +251,7 @@ def test_questionForm():
     assert response.status_code == 302, "After question post, user should be redirected"
 
 # creating answer to existing question and storing it in database
+# Test Case: 28
 def test_answerForm():
     tester.post("/login", data={
         "username": "dmah",
