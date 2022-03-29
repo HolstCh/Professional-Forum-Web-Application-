@@ -200,7 +200,7 @@ def test_editProfile():
         "fName": "chad",
         "mNames": "daniel",
         "lName": "holst",
-        "email": "fake@email.com",
+        "email": "editMyFakeEmail@email.com",
         "curComp": "DGC",
         "prof": "Engineer",
         "skills": "circuit building",
