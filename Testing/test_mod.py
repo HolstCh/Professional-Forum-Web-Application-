@@ -157,4 +157,70 @@ def test_loginFormValid():
         "password": "invalidPass"
     })
 
-    assert response.status_code==200, "Login should be invalid and not redirect"        
+    assert response.status_code==200, "Login should be invalid and not redirect"
+    
+    # tests for sign up functionality:
+    def test_signUpDoesNotExist():
+        response = tester.post("/signUp", data={
+            "username": "newUser",
+            "password": "newPassword"
+        })
+        assert response.status_code == 302, "User should provide new username that does not exist to redirect after sign up"
+
+    # requires username "chad" in USERS
+    def test_signUpDoesExist():
+        response = tester.post("/signUp", data={
+            "username": "chad",
+            "password": "holst"
+        })
+        assert response.status_code == 500, "User provided username that already exists so sign up failed"
+
+    # requires username "chad" in USERS
+    # test for create profile functionality:
+    def test_createProfileSuccessfulRedirect():
+        response = tester.post("/createProfile/chad", data={
+                               "fName": "chad",
+                               "mNames": "daniel",
+                               "lName": "holst",
+                               "email": "fake@email.com",
+                               "curComp": "DGC",
+                               "prof": "mechanic",
+                               "skills": "fixing machinery",
+                               "desc": "hands on",
+                               "proj": "forklift overhaul"
+                               })
+        assert response.status_code == 302, "User should provide all input fields to complete profile and redirect"
+
+    # requires username "chad" in USERS
+    # test for add company functionality:
+    def test_addCompanySuccessful():
+        response = tester.post("/addCompany/chad", data={
+                               "company": "Apple",
+                               "position": "Software Engineer",
+                               "start": "April,2005",
+                               "end": "June, 2022"
+                               })
+        assert response.status_code == 200, "User should provide all data in input fields for adding company info to profile"
+
+    # requires post with similar search bar input, "testSearch"
+    # tests for search post functionality:
+    def test_searchForQueryRoute():
+        response = tester.post("/query=test", data={
+                               "basicSearch": "testSearch",
+                               })
+
+        assert response.status_code == 302, "Question search should redirect to search query route"
+
+    # requires post with similar search bar input, "testSearch"
+    def test_questionPostSearch():
+        response = tester.post("/post/question/", data={
+                               "basicSearch": "testSearch"
+                               })
+        assert response.status_code == 302, "Question search should redirect to search query route"
+
+    # requires post with similar search bar input, "testSearch" and post with qid of 1
+    def test_viewPostSearch():
+        response = tester.post("/post/view/1", data={
+                               "basicSearch": "testSearch"
+                               })
+        assert response.status_code == 302, "Question search should redirect to search query route"
