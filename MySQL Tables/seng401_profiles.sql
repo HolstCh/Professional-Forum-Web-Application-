@@ -30,14 +30,14 @@ CREATE TABLE `profiles` (
   `lastName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `currentCompany` varchar(255) DEFAULT NULL,
+  `profession` text NOT NULL,
   `skills` text,
   `description` text,
   `projects` text,
-  `profession` text NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `username` (`username`),
   CONSTRAINT `profiles_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `profiles` (
 
 LOCK TABLES `profiles` WRITE;
 /*!40000 ALTER TABLE `profiles` DISABLE KEYS */;
-INSERT INTO `profiles` VALUES (1,'test1','fName',NULL,'lName','email@site.xyz',NULL,NULL,NULL,NULL,'some job'),(3,'dmah','Dylan','Connor','Mah','dylan.mah@ucalgary.ca',NULL,NULL,NULL,NULL,'Software Engineer');
+INSERT INTO `profiles` VALUES (1,'test1','fName','None','lName','email@site.xyz','None','some','None','None','None'),(3,'dmah','Dylan','Connor','Mah','dylan.mah@ucalgary.ca','None','Software','Can code in Java, C/C++, HTML/CSS, Python, PHP','20 year old male software engineer student at the University of Calgary. Canadian citizen of Chinese descent.','None'),(10,'test123','Joe','Xander','Smith','jxsmith@email.xyz','Husky','Project Manager','Leadership experience, quick learner','30 years of work experience','Gas stations around town'),(17,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(18,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(19,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(20,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(21,'testUser','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(26,'testUser','chad','daniel','holst','fake@email.com','DGC','Engineer','machinery design','hands on','designing engine'),(27,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(28,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(29,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(30,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(31,'chad','chad','daniel','holst','editMyFakeEmail@email.com','DGC','Engineer','circuit building','hands on','designing electrical grid'),(32,'chad','chad','daniel','holst','fake@email.com','DGC','Engineer','machinery design','hands on','designing engine');
 /*!40000 ALTER TABLE `profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-21 21:58:49
+-- Dump completed on 2022-03-29 13:52:33

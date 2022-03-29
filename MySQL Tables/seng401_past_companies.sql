@@ -39,7 +39,7 @@ CREATE TABLE `past_companies` (
 
 LOCK TABLES `past_companies` WRITE;
 /*!40000 ALTER TABLE `past_companies` DISABLE KEYS */;
-INSERT INTO `past_companies` VALUES ('dmah','Kumon','2018-08','2020-03','Grader'),('dmah','Kumon','2018-08','2020-03','Grader');
+INSERT INTO `past_companies` VALUES ('dmah','Kumon','2018-08','2020-03','Grader'),('dmah','Kumon','2018-08','2020-03','Grader'),('test123','Shell','2013-04','2021-07','Project Manager'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('testUser','Apple','April,2005','June, 2022','Software Engineer'),('testUser','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer'),('chad','Apple','April,2005','June, 2022','Software Engineer');
 /*!40000 ALTER TABLE `past_companies` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-21 21:58:49
+-- Dump completed on 2022-03-29 13:52:32
