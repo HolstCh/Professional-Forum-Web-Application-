@@ -14,10 +14,18 @@ from Search import *
 from Posts import *
 from PostHistory import *
 import pytest
-import sqlite3
 import mysql.connector
-import unittest
-from unittest.mock import MagicMock
+
+
+dbc=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="draGGun.!382",
+    database="seng401"
+)
+
+cursor=dbc.cursor()
+
 
 # Filter class test:
 # Test Case: 1
@@ -124,37 +132,22 @@ def test_fakePage():
     response=tester.get("/somepageurl")
 
     assert response.status_code == 404, "Page should not exist"
-    
 
-# Test Case: 17
-def test_loginFormValid():
-    response=tester.post("/login", data={
-        "username": "dmah",
-        "password": "dmah"
-    })
-
-    assert response.status_code==302, "Login should be valid and redirect"
-
-# Test Case: 18
-def test_loginFormValid():
-    response=tester.post("/login", data={
-        "username": "invalidUser",
-        "password": "invalidPass"
-    })
-
-    assert response.status_code==200, "Login should be invalid and not redirect"
 
 # tests for sign up functionality:
-# Test Case: 19
+# Test Case: 17
 def test_signUpDoesNotExist():
+    cursor.execute("DELETE FROM Users WHERE Username='testUser'")
+    dbc.commit()
+
     response = tester.post("/signUp", data={
-        "username": "newUser",
-        "password": "newPassword"
+        "username": "testUser",
+        "password": "password"
     })
     assert response.status_code == 302, "User should provide new username that does not exist to redirect after sign up"
 
 # requires username "chad" in USERS
-# Test Case: 20
+# Test Case: 18
 def test_signUpDoesExist():
     response = tester.post("/signUp", data={
         "username": "chad",
@@ -162,11 +155,29 @@ def test_signUpDoesExist():
     })
     assert response.status_code == 200, "User provided username that already exists so sign up failed"
 
+# Test Case: 19
+def test_loginFormValid():
+    response=tester.post("/login", data={
+        "username": "testUser",
+        "password": "password"
+    })
+
+    assert response.status_code==302, "Login should be valid and redirect"
+
+# Test Case: 20
+def test_loginFormValid():
+    response=tester.post("/login", data={
+        "username": "invalidUser",
+        "password": "invalidPass"
+    })
+
+    assert response.status_code==200, "Login should be invalid and not redirect"    
+
 # requires username "chad" in USERS
 # test for create profile functionality:
 # Test Case: 21
 def test_createProfileSuccessfulRedirect():
-    response = tester.post("/createProfile/chad", data={
+    response = tester.post("/createProfile/testUser", data={
                            "fName": "chad",
                            "mNames": "daniel",
                            "lName": "holst",
@@ -183,7 +194,7 @@ def test_createProfileSuccessfulRedirect():
 # test for editing profile functionality:
 # Test Case: 22
 def test_editProfile():
-    response = tester.post("/profile/edit/chad", data={
+    response = tester.post("/profile/edit/testUser", data={
         "fName": "chad",
         "mNames": "daniel",
         "lName": "holst",
@@ -200,7 +211,7 @@ def test_editProfile():
 # test for add company functionality:
 # Test Case: 23
 def test_addCompanySuccessful():
-    response = tester.post("/addCompany/chad", data={
+    response = tester.post("/addCompany/testUser", data={
                            "company": "Apple",
                            "position": "Software Engineer",
                            "start": "April,2005",
@@ -221,7 +232,7 @@ def test_searchForQueryRoute():
 # requires post with similar search bar input, "testSearch"
 # Test Case: 25
 def test_questionPostSearch():
-    response = tester.post("/post/question/", data={
+    response = tester.post("/post/question", data={
                            "basicSearch": "testSearch"
                            })
     assert response.status_code == 302, "Question search should redirect to search query route"
@@ -238,8 +249,8 @@ def test_viewPostSearch():
 # Test Case: 27
 def test_questionForm():
     tester.post("/login", data={
-        "username": "dmah",
-        "password": "dmah"
+        "username": "testUser",
+        "password": "password"
     })
 
     response=tester.post("/post/question", data={
@@ -255,8 +266,8 @@ def test_questionForm():
 # Test Case: 28
 def test_answerForm():
     tester.post("/login", data={
-        "username": "dmah",
-        "password": "dmah"
+        "username": "testUser",
+        "password": "password"
     })
 
     response=tester.post("/post/view/1", data={
