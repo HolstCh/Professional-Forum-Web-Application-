@@ -57,7 +57,7 @@ def test_mainPage():
 
 # Test Case: 4
 def test_registeredMain():
-    response=tester.get("/registeredMain/test1")
+    response=tester.get("/registeredMain/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
     
@@ -75,7 +75,7 @@ def test_login():
 
 # Test Case: 7
 def test_signUp():
-    response=tester.get("/createProfile/test1")
+    response=tester.get("/createProfile/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
@@ -87,25 +87,25 @@ def test_createProfile():
 
 # Test Case: 9
 def test_viewProfile():
-    response=tester.get("/profile/view/test1")
+    response=tester.get("/profile/view/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
 # Test Case: 10
 def test_editProfile():
-    response=tester.get("/profile/edit/test1")
+    response=tester.get("/profile/edit/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
 # Test Case: 11
 def test_questionHistory():
-    response=tester.get("/questions/test1")
+    response=tester.get("/questions/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
 # Test Case: 12
 def test_answerHistory():
-    response=tester.get("/answers/test1")
+    response=tester.get("/answers/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
@@ -123,7 +123,7 @@ def test_viewPost():
 
 # Test Case: 15
 def test_addCompany():
-    response=tester.get("/addCompany/test1")
+    response=tester.get("/addCompany/dmah")
 
     assert response.status_code == 200, "Page should exist and load without errors"
 
@@ -137,12 +137,12 @@ def test_fakePage():
 # tests for sign up functionality:
 # Test Case: 17
 def test_signUpDoesNotExist():
-    cursor.execute("DELETE FROM Users WHERE Username='testUser'")
+    cursor.execute("DELETE FROM Users WHERE Username='newUser'")
     dbc.commit()
 
     response = tester.post("/signUp", data={
-        "username": "testUser",
-        "password": "password"
+        "username": "newUser",
+        "password": "newPassword"
     })
     assert response.status_code == 302, "User should provide new username that does not exist to redirect after sign up"
 
@@ -158,8 +158,8 @@ def test_signUpDoesExist():
 # Test Case: 19
 def test_loginFormValid():
     response=tester.post("/login", data={
-        "username": "testUser",
-        "password": "password"
+        "username": "dmah",
+        "password": "dmah"
     })
 
     assert response.status_code==302, "Login should be valid and redirect"
@@ -177,7 +177,7 @@ def test_loginFormValid():
 # test for create profile functionality:
 # Test Case: 21
 def test_createProfileSuccessfulRedirect():
-    response = tester.post("/createProfile/testUser", data={
+    response = tester.post("/createProfile/chad", data={
                            "fName": "chad",
                            "mNames": "daniel",
                            "lName": "holst",
@@ -194,7 +194,7 @@ def test_createProfileSuccessfulRedirect():
 # test for editing profile functionality:
 # Test Case: 22
 def test_editProfile():
-    response = tester.post("/profile/edit/testUser", data={
+    response = tester.post("/profile/edit/chad", data={
         "fName": "chad",
         "mNames": "daniel",
         "lName": "holst",
@@ -211,7 +211,7 @@ def test_editProfile():
 # test for add company functionality:
 # Test Case: 23
 def test_addCompanySuccessful():
-    response = tester.post("/addCompany/testUser", data={
+    response = tester.post("/addCompany/chad", data={
                            "company": "Apple",
                            "position": "Software Engineer",
                            "start": "April,2005",
@@ -249,8 +249,8 @@ def test_viewPostSearch():
 # Test Case: 27
 def test_questionForm():
     tester.post("/login", data={
-        "username": "testUser",
-        "password": "password"
+        "username": "dmah",
+        "password": "dmah"
     })
 
     response=tester.post("/post/question", data={
@@ -265,10 +265,12 @@ def test_questionForm():
 # creating answer to existing question and storing it in database
 # Test Case: 28
 def test_answerForm():
-    tester.post("/login", data={
-        "username": "testUser",
-        "password": "password"
+    response=tester.post("/login", data={
+        "username": "dmah",
+        "password": "dmah"
     })
+
+    assert response.status_code == 302, "After successful login, user should be redirected"
 
     response=tester.post("/post/view/1", data={
         "ans": "Sample answer"
