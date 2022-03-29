@@ -184,7 +184,7 @@ def test_createProfileSuccessfulRedirect():
                            "lName": "holst",
                            "email": "fake@email.com",
                            "curComp": "DGC",
-                           "prof": "mechanic",
+                           "prof": "mechanical engineer",
                            "skills": "fixing machinery",
                            "desc": "hands on",
                            "proj": "forklift overhaul"
