@@ -5,7 +5,7 @@
   "url": "http://knowpros.pythonanywhere.com",
   "tests": [{
     "id": "d6e9d705-73ea-475d-a7f2-4cc74b052c51",
-    "name": "Create a profile",
+    "name": "34: Create a profile",
     "commands": [{
       "id": "5e5e4fbb-03c4-46d3-9f63-7d1f5527b7d0",
       "comment": "",
@@ -309,7 +309,7 @@
     }]
   }, {
     "id": "1f79b156-1e2f-4255-8cca-4fc9ad224d39",
-    "name": "Invalid login",
+    "name": "38: Invalid login",
     "commands": [{
       "id": "94bd9fb1-c6db-40cf-9ef9-c62ff14ac15b",
       "comment": "",
@@ -414,7 +414,7 @@
     }]
   }, {
     "id": "9b42fc73-8475-4149-a92f-11c84f08d222",
-    "name": "valid login",
+    "name": "41: valid login",
     "commands": [{
       "id": "57716bc2-9d10-4d90-bc27-f7eb3b49eeb2",
       "comment": "",
@@ -509,7 +509,7 @@
     }]
   }, {
     "id": "5b1b33d9-0d7e-41b4-980c-bfa869456435",
-    "name": "Create question",
+    "name": "35: Create question",
     "commands": [{
       "id": "164cd239-4fc8-4787-aba7-9ab7e66594a8",
       "comment": "",
@@ -744,7 +744,7 @@
     }]
   }, {
     "id": "1e8df5ec-bb89-4bff-b12a-6a00b2ad6e71",
-    "name": "Click on home page without login",
+    "name": "31: Click on home page without login",
     "commands": [{
       "id": "9f40d8b3-f341-4497-9437-67218b06135a",
       "comment": "",
@@ -787,7 +787,7 @@
     }]
   }, {
     "id": "3b33322a-0987-4688-ac40-63367c6e9a1c",
-    "name": "Click on recent questions while logged in",
+    "name": "33: Click on recent questions while logged in",
     "commands": [{
       "id": "2c554bd6-d742-4541-a3d5-bea7649f4208",
       "comment": "",
@@ -896,7 +896,7 @@
     }]
   }, {
     "id": "647c1213-02bb-4350-a89b-7076ac7efc6f",
-    "name": "Click on edit profile",
+    "name": "30: Click on edit profile",
     "commands": [{
       "id": "a0621fd5-7919-4f5b-9d47-37a2ba2e3aa2",
       "comment": "",
@@ -1005,7 +1005,7 @@
     }]
   }, {
     "id": "c0cb71cd-9a24-404d-964a-50732e5387a4",
-    "name": "Edit profile",
+    "name": "37: Edit profile",
     "commands": [{
       "id": "8d0c296e-8ab7-49a5-b1f2-7941d6a6c443",
       "comment": "",
@@ -1175,7 +1175,7 @@
     }]
   }, {
     "id": "2ee1d798-18d9-4416-aed9-062178e1b4ab",
-    "name": "Click on question history",
+    "name": "32: Click on question history",
     "commands": [{
       "id": "b00eda7c-2cbe-4a40-b1c8-59c45ebc49c9",
       "comment": "",
@@ -1280,7 +1280,7 @@
     }]
   }, {
     "id": "98a280fd-aca4-473d-b53f-d9c094bf43af",
-    "name": "Click on answer history",
+    "name": "29. Click on answer history",
     "commands": [{
       "id": "6d248bc8-baae-4d7f-91ba-d1a1b38c7154",
       "comment": "",
@@ -1402,7 +1402,7 @@
     }]
   }, {
     "id": "60c03fa8-9f2b-485c-900f-85aca3072430",
-    "name": "Sign out test",
+    "name": "40: Sign out test",
     "commands": [{
       "id": "dc341144-1d3b-4f54-abd6-3e8054e71121",
       "comment": "",
@@ -1522,7 +1522,7 @@
     }]
   }, {
     "id": "b2f2b633-b8c1-4689-8e90-206146bdfe98",
-    "name": "Search test with no results",
+    "name": "39: Search test with no results",
     "commands": [{
       "id": "04d243b8-d9d9-492a-8af5-1e675404a385",
       "comment": "",
@@ -1582,7 +1582,7 @@
     }]
   }, {
     "id": "050f54ca-a03c-4c95-83b4-c56d42e58010",
-    "name": "Duplicate account test",
+    "name": "36: Duplicate account test",
     "commands": [{
       "id": "f7bfc58a-9448-4baf-a2a5-06781fe771ca",
       "comment": "",
