@@ -1,4 +1,3 @@
-# cd "C:\Users\coolp\Documents\Dylan\School\Y3 - 2022 WINTER\SENG 401 - Software Architecture\Project\Forum_Project_SENG_401"
 # python -m pytest test_mod.py
 
 from flask import Flask, redirect, url_for, render_template, request, jsonify, flash
