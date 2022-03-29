@@ -143,6 +143,8 @@ def test_fakePage(self):
 
     assert response.status_code == 404, "Page should not exist"
 
+
+
 def test_loginFormValid():
     response=tester.post("/login", data={
         "username": "dmah",
@@ -173,7 +175,7 @@ def test_signUpDoesExist():
         "username": "chad",
         "password": "holst"
     })
-    assert response.status_code == 500, "User provided username that already exists so sign up failed"
+    assert response.status_code == 200, "User provided username that already exists so sign up failed"
 
 # requires username "chad" in USERS
 # test for create profile functionality:
