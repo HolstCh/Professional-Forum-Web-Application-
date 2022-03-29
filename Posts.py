@@ -80,7 +80,7 @@ class Posts:
         profession=cursor.fetchall()
 
         cursor.execute("""INSERT INTO Answer_Post (QID, Username, Body, Timestamp, Profession)
-            VALUES (""" + qid + """, %s, %s, %s, %s)""", (username, answer, timestamp, Profession))
+            VALUES (""" + qid + """, %s, %s, %s, %s)""", (username, answer, timestamp, profession))
 
         mysql.connection.commit()
     # end of def
