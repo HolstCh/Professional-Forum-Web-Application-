@@ -8,4 +8,10 @@ If you want to run the program test files, please install the following Python l
  - flask_mysqldb
  - pytest-cov
  - flask
- - mysql-connector-python
+ - mysql-connector-python 
+
+
+#  Model-View-Controller Architectural Pattern:
+ - Model: MySQL Workbench/MySQL
+ - View: View.py
+ - Controller classes: Search.py, Profile.py, Posts.py, PostHistory.py, and Login.py
