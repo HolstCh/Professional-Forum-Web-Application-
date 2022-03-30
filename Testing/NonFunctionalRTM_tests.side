@@ -1,0 +1,332 @@
+{
+  "id": "370ee12f-e10c-4849-af66-7fddb6691f02",
+  "version": "2.0",
+  "name": "NonFunctionalRTM_tests",
+  "url": "http://knowpros.pythonanywhere.com",
+  "tests": [{
+    "id": "57545ab7-da06-4249-b21d-dac2b71e2c3a",
+    "name": "LoadTestUnder5sec",
+    "commands": [{
+      "id": "6b27a3da-036d-467a-9e13-453d3566fadf",
+      "comment": "",
+      "command": "open",
+      "target": "/unregisteredMain",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d978ff2f-c427-460b-9f9d-2ce9baf5577b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x880",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad02040f-ca21-461a-8ebe-9047bf1330ff",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.headerButton:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//div[@id='main_header']/form/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './login')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a06801f8-f370-4e44-b0c6-153bfcf4bfe4",
+    "name": "LoginRequestUnder5sec",
+    "commands": [{
+      "id": "b46db16f-7885-4fa3-b0b1-3bdcc9387663",
+      "comment": "",
+      "command": "open",
+      "target": "/unregisteredMain",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b3fe5706-71b5-46e7-891b-87a8f05b790a",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x880",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "05d2ba21-095c-4fbd-8d97-471faa05cfd8",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.headerButton:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//div[@id='main_header']/form/a[2]", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './login')]", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d3c2ca03-fc94-4ca9-86f4-c29ddb0ff35b",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "dc4dbd15-4efc-4f6b-865e-68447011bfcd",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "logintest"
+    }, {
+      "id": "71163087-c541-4a90-b78a-4e8c3087f56f",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "98acc81f-fb11-433c-b70b-0c2fed06c159",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "8d6308aa-e472-4954-b818-11b24dcf72bc",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='checkbox']", "xpath:attributes"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "441f03cc-cc52-4985-9870-efd3909f0b84",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@value='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a84ad4ef-65a7-45a2-8191-4aa42bb88507",
+    "name": "MicrosoftEdgeTest",
+    "commands": [{
+      "id": "6ccb968c-c917-4fef-80b6-fee0a13a8079",
+      "comment": "",
+      "command": "open",
+      "target": "/unregisteredMain",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bf4556cc-5b76-49bf-ad64-35e76e183570",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "785x864",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b049fd45-60fa-4b4f-abd9-82788f519191",
+      "comment": "",
+      "command": "click",
+      "target": "css=.mainContentContainer",
+      "targets": [
+        ["css=.mainContentContainer", "css:finder"],
+        ["xpath=//div[3]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf35c8b5-093d-43dd-bfc7-781632989dd2",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Testing frontend",
+      "targets": [
+        ["linkText=Testing frontend", "linkText"],
+        ["css=div:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Testing frontend')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '../post/view/28')]", "xpath:href"],
+        ["xpath=//div[3]/div/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Testing frontend')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d92af505-7c42-4b84-8f9a-fa127b42a99a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.headerButton:nth-child(4)", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//div[@id='main_header']/form/a[2]", "xpath:idRelative"],
+        ["xpath=//a[@href='http://knowpros.pythonanywhere.com/login']", "xpath:href"],
+        ["xpath=//a[2]", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "cab6f4cb-04a8-4186-a269-1e1ecb35247c",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "2495be91-8a97-42c3-9291-13f21de045db",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "logi"
+    }, {
+      "id": "67c04809-90e6-48e6-b964-4d7fd8d2ee4d",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "logintest"
+    }, {
+      "id": "ddbec215-10cd-4410-9cbe-991db103c175",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "72b2adf2-22f4-4b48-bc0b-4984ad261075",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//p[2]/input", "xpath:position"]
+      ],
+      "value": "password"
+    }, {
+      "id": "8fe4bf2c-aac9-44c3-b554-856bb8e1f72d",
+      "comment": "",
+      "command": "click",
+      "target": "css=input:nth-child(1)",
+      "targets": [
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@type='checkbox']", "xpath:attributes"],
+        ["xpath=//p[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7cd16418-379b-44cd-ba14-2103723fdd23",
+      "comment": "",
+      "command": "click",
+      "target": "css=button",
+      "targets": [
+        ["css=button", "css:finder"],
+        ["xpath=//button[@value='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Submit')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "314d7d8e-92a1-4334-84d6-6b2df019750a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Edit Profile",
+      "targets": [
+        ["linkText=Edit Profile", "linkText"],
+        ["css=.sideNav > a:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Edit Profile')]", "xpath:link"],
+        ["xpath=//a[@href='http://knowpros.pythonanywhere.com/profile/edit/logintest']", "xpath:href"],
+        ["xpath=//a[3]", "xpath:position"],
+        ["xpath=//a[contains(.,'  Edit Profile')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "71257697-ae1f-4c3e-b68d-4b523ec9ae11",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Sign Out",
+      "targets": [
+        ["linkText=Sign Out", "linkText"],
+        ["css=.headerButton:nth-child(3)", "css:finder"],
+        ["xpath=//a[contains(text(),'Sign Out')]", "xpath:link"],
+        ["xpath=//div[@id='main_header']/form/a", "xpath:idRelative"],
+        ["xpath=//a[@href='http://knowpros.pythonanywhere.com/unregisteredMain']", "xpath:href"],
+        ["xpath=//a", "xpath:position"],
+        ["xpath=//a[contains(.,'Sign Out')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "7a09c7c6-fb05-4732-80df-1a71dc5d7376",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["57545ab7-da06-4249-b21d-dac2b71e2c3a"]
+  }],
+  "urls": ["http://knowpros.pythonanywhere.com/"],
+  "plugins": []
+}
